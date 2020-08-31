@@ -1,0 +1,10 @@
+.wp-menu-image img{
+  width: 24px!important;
+}
+
+.wp-menu-image img[src*=hand]{
+  width: 14px!important;
+}
+.wp-menu-image img[src*=house2]{
+  width: 20px!important;
+}

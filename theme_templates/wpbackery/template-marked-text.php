@@ -1,0 +1,1 @@
+<h2 class="pre-wrap <?php echo $style ?>"><?php echo $text; ?></h2>
