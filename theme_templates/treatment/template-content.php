@@ -12,14 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="col-md-7">
 
               <?php foreach ($pages as $id => $p):
+                clog($p);
                 if (!$p['show']) {
                   continue;
                 }
-
-                clog($p['text']);
-
                 ?>
-              <div class="page-item" id="<?php echo $id ?>" <?php echo 'style="display: '.$p['display'].'"' ?>>
+              <div class="page-item" id="<?php echo $id ?>" <?php echo 'data-display="'.$p['display'].'"' ?>>
                 <h3 class="paragraph-title"><?php echo $p['title'] ?></h3>
                 <?php if($p['text'] ): ?>
                   <div class="regular-text colored">
@@ -40,52 +38,78 @@ if ( ! defined( 'ABSPATH' ) ) {
                    <div class="spacer-h-30"></div>
                 <?php endif ?>
 
-                <?php if ($p['pricing_items']): ?>
-                <div class="tabs">
-                  <div class="tabs__header">
-                    <?php
-                    $active = 'active';
-                    foreach ($p['pricing_items'] as $city => $value): ?>
-                      <a href="#<?php echo ($city) ?>" class="tabs__header-item <?php echo $active ?>"><?php echo $city ?></a>
-                    <?php
-                    $active = '';
-                     endforeach; ?>
-                  </div>
-                  <div class="tabs__body">
-                    <?php
-                    $style = 'style="display: block;"';
-                    foreach ($p['pricing_items'] as $city => $data): ?>
-                    <div class="tabs__body-item" id="<?php echo ($city) ?>" <?php echo $style ?>>
+                <?php if ($p['before_after_items']): ?>
+                  <?php foreach ($p['before_after_items'] as $slide):
+                    $image_before = wp_get_attachment_image_url($slide['image_before'], 'before_after');
+                    $image_after = wp_get_attachment_image_url($slide['image_after'], 'before_after');
 
-                      <?php foreach ($data as $key => $item): ?>
-                      <div class="pricing-item">
+                    $dentist_name = trim(get_field('first_name', $slide['dentist']->ID) . ' ' .get_field('last_name', $slide['dentist']->ID))  ;
+                   ?>
+                    <div class="ba_wrapper">
+                      <div class="ba_data">
                         <div class="row">
-                          <div class="col-sm-7 col-lg-8">
-                            <?php if ($item['title']): ?>
-                            <h4 class="pricing-item__title"><?php echo $item['title'] ?></h4>
-                            <?php endif ?>
-                            <?php if ($item['description']): ?>
-                            <p class="pricing-item__text"><?php echo $item['description'] ?></p>
-                            <?php endif ?>
-                          </div>
-                            <?php if ($item['starting_price']): ?>
-                          <div class="col-sm-5 col-lg-4 text-right-sm valign-center">
-                            <span class="pricing-item__label">from £</span>
-                            <span class="pricing-item__val"><?php echo $item['starting_price'] ?></span>
-                          </div>
-                            <?php endif ?>
+
+                          <div class="col-6 valign-top">Dr. <?php echo $dentist_name ?></div>
+                          <div class="col-6 text-right valign-top"><?php echo $obj->post_title ?></div>
                         </div>
-                      </div><!-- pricing-item -->
-
-                      <?php endforeach ?>
+                      </div>
+                      <div class="ba-slider">
+                        <img src="<?php echo $image_after; ?>" alt="">
+                        <div class="resize">
+                          <img src="<?php echo $image_before ; ?>" alt="">
+                        </div>
+                        <span class="handle"></span>
+                      </div>
                     </div>
-                  <?php
-                    $style = 'style="display: none;"';;
-                     endforeach; ?>
 
+                  <?php endforeach ?>
+                <?php endif ?>
+
+                <?php if ($p['pricing_items']): ?>
+                  <div class="tabs">
+                    <div class="tabs__header">
+                      <?php
+                      $active = 'active';
+                      foreach ($p['pricing_items'] as $city => $value): ?>
+                        <a href="#<?php echo ($city) ?>" class="tabs__header-item <?php echo $active ?>"><?php echo $city ?></a>
+                      <?php
+                      $active = '';
+                       endforeach; ?>
+                    </div>
+                    <div class="tabs__body">
+                      <?php
+                      $style = 'style="display: block;"';
+                      foreach ($p['pricing_items'] as $city => $data): ?>
+                      <div class="tabs__body-item" id="<?php echo ($city) ?>" <?php echo $style ?>>
+
+                        <?php foreach ($data as $key => $item): ?>
+                        <div class="pricing-item">
+                          <div class="row">
+                            <div class="col-sm-7 col-lg-8">
+                              <?php if ($item['title']): ?>
+                              <h4 class="pricing-item__title"><?php echo $item['title'] ?></h4>
+                              <?php endif ?>
+                              <?php if ($item['description']): ?>
+                              <p class="pricing-item__text"><?php echo $item['description'] ?></p>
+                              <?php endif ?>
+                            </div>
+                              <?php if ($item['starting_price']): ?>
+                            <div class="col-sm-5 col-lg-4 text-right-sm valign-center">
+                              <span class="pricing-item__label">from £</span>
+                              <span class="pricing-item__val"><?php echo $item['starting_price'] ?></span>
+                            </div>
+                              <?php endif ?>
+                          </div>
+                        </div><!-- pricing-item -->
+
+                        <?php endforeach ?>
+                      </div>
+                    <?php
+                      $style = 'style="display: none;"';;
+                       endforeach; ?>
+
+                    </div>
                   </div>
-                </div>
-
                 <?php endif ?>
               </div>
               <?php endforeach ?>

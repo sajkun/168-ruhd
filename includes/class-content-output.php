@@ -19,6 +19,7 @@ class theme_content_output{
   * @hookedto
   */
   public static function print_header(){
+    $obj_id = get_queried_object_id();
 
     $main_menu = wp_nav_menu( array(
       'theme_location'  => 'main_menu',
@@ -62,6 +63,7 @@ class theme_content_output{
       'show_intercom' => in_array('intercom/bootstrap.php', $plugins_active ),
       'main_menu'   => $main_menu,
       'clinics_menu' => $clinics_menu,
+      'contrast' => get_post_meta( $obj_id , 'invert_header',true),
     );
     print_theme_template_part('header', 'globals', $args);
   }

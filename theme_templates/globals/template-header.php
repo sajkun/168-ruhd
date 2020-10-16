@@ -3,9 +3,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
   exit; // Exit if accessed directly.
 }
+
+
 ?>
 
-<header class="site-header">
+<header class="site-header <?php echo $contrast? 'contrast-header': ''; ?>">
   <div class="site-header__top hide-tablet">
     <div class="container">
       <div class="row">

@@ -101,9 +101,8 @@ class velesh_init_theme{
     add_image_size('icon', 96, 96, true);
     add_image_size('trt_lg', 511, 560, true);
     add_image_size('trt_sm', 506, 274, true);
+    add_image_size('before_after', 580, 320, true);
  }
-
-
 
   /**
    * enqueues javascripts and css for the frontend
@@ -111,13 +110,12 @@ class velesh_init_theme{
    * @hookedto - wp_enqueue_scripts 999
    */
   public function enqueue_scripts_styles_front(){
+    wp_enqueue_style( 'before-after', THEME_URL.'/assets/libs/before-after/before-after.min.css', THEME_VERSION );
+    wp_enqueue_style( $this->main_style_slug, THEME_URL.$this->main_style, THEME_VERSION );
 
-    // wp_enqueue_style( 'owl-carousel', THEME_URL.'/assets/libs/owlcarousel/css/owl.carousel.min.css', THEME_VERSION );
-    // wp_enqueue_script('owl-carousel',THEME_URL.'/assets/libs/owlcarousel/js/owl.carousel.min.js', array(), THEME_VERSION, true);
-
+    wp_enqueue_script('owl-carousel',THEME_URL.'/assets/libs/before-after/before-after.min.js', array(), THEME_VERSION, true);
     wp_enqueue_script($this->main_script_slug, THEME_URL.$this->main_script, array('jquery'), THEME_VERSION, true);
 
-    wp_enqueue_style( $this->main_style_slug, THEME_URL.$this->main_style, THEME_VERSION );
   }
 
 

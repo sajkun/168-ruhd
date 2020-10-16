@@ -13,6 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class theme_treatment_output{
   public static function print_welcome_screen(){
+
+    if(!function_exists('get_field')){
+      return;
+    }
+
     $obj = get_queried_object();
 
     $category = wp_get_post_terms($obj->ID, 'treatments_cat', array('fields' => 'all'));
@@ -57,6 +62,7 @@ class theme_treatment_output{
   }
 
   public static function print_content(){
+
     $obj = get_queried_object();
 
     if(function_exists('get_field')){
@@ -86,7 +92,10 @@ class theme_treatment_output{
     $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
     $form_inclicnic    = ($form_id)? do_shortcode($shortcode): false;
 
+    clog(get_field('before_after_items', $obj->ID));
+
      $args = array(
+       'obj'    => $obj,
        'form_online'    => $form_online,
        'form_inclicnic' => $form_inclicnic,
        'pages' => array(
@@ -104,6 +113,7 @@ class theme_treatment_output{
             'display' => 'none',
             'title'   => get_field('before_after_title', $obj->ID),
             'text'   =>  apply_filters('the_content',get_field('before_after', $obj->ID)),
+            'before_after_items'   => get_field('before_after_items', $obj->ID),
          ),
          'overview'    => array(
             "show"    => true,
