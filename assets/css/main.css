@@ -8499,6 +8499,101 @@ ul {
   text-align: right;
 }
 
+.team-member {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .team-member {
+    border-right: 1px solid #d2bba4;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .team-member:nth-child(4n+2) {
+    border-right: 0;
+  }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  .team-member:nth-child(4n+3) {
+    border-right: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .team-member:nth-child(4n+4) {
+    border-right: 0;
+  }
+}
+
+.team-member img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.team-member__overlay {
+  position: absolute;
+  background-image: url(../images/bg/overlay_team.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 30px 15px 15px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+@media (min-width: 980px) {
+  .team-member__overlay {
+    padding: 30px 30px 15px;
+  }
+}
+
+.team-member__overlay .name {
+  display: block;
+  empty-cells: 100%;
+  color: #1a1c1a;
+  font-family: "Libre Baskerville", serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.08px;
+  line-height: 26px;
+  text-align: left;
+  margin: 0 0 5px;
+}
+
+.team-member__overlay .grades {
+  display: block;
+  margin: 0 0 10px;
+  color: #64503f;
+  font-family: "Libre Baskerville", serif;
+  font-size: 13px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.05px;
+  line-height: 16px;
+  text-align: left;
+}
+
+.team-member__overlay .spesilization {
+  display: block;
+  margin: 0;
+  color: #1a1c1a;
+  font-family: "PoppinsFont", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 1px;
+  line-height: normal;
+  text-align: left;
+  text-transform: uppercase;
+}
+
 .carousel {
   background-color: #e7c8aa;
   overflow: hidden;

@@ -19,11 +19,6 @@ function vc_before_init_pricing_elements(){
 
 class WPBakeryShortCode_pricing_elements extends WPBakeryShortCode {
    protected function content( $atts, $content = null ) {
-    extract( shortcode_atts( array(
-      'link' => false,
-      'alternate_action' => 'basic',
-      'text' => __('Discover More', 'theme-translations'),
-    ), $atts ) );
 
     $args = array(
       'posts_per_page' => -1,

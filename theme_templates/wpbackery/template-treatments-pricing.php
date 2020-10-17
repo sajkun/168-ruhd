@@ -136,7 +136,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <?php foreach ($treatments['Treatments'] as $t):
     if (!isset($t['pricing']['Manchester'])){continue;}
     ?>
-    <div class="row">
+    <div class="row line-item">
       <div class="col-lg-6">
         <span class="pricing-item__title"><?php echo $t['name']; ?>
 

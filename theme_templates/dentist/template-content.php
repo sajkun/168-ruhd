@@ -16,9 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                   continue;
                 }
 
-                clog($p['text']);
-
-                ?>
+               ?>
               <div class="page-item" id="<?php echo $id ?>" <?php echo 'style="display: '.$p['display'].'"' ?>>
                 <h3 class="paragraph-title"><?php echo $p['title'] ?></h3>
                 <?php if($p['text'] ): ?>

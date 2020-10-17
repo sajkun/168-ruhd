@@ -26,7 +26,6 @@ class theme_construct_page{
     add_action('do_theme_footer', array('theme_content_output', 'print_footer'));
 
     if(self::is_page_type('treatment')){
-      clog('treatment');
       add_action('do_theme_content', array('theme_treatment_output', 'print_welcome_screen'));
       add_action('do_theme_content', array('theme_treatment_output', 'print_content'),20);
       add_action('do_theme_after_footer', array('theme_treatment_output', 'print_inclinic_form'),20);
@@ -34,13 +33,11 @@ class theme_construct_page{
 
     } else if(self::is_page_type('dentist')){
 
-      clog('dentist');
       add_action('do_theme_content', array('theme_dentist_output', 'print_welcome_screen'));
       add_action('do_theme_content', array('theme_dentist_output', 'print_content'),20);
       add_action('do_theme_after_footer', array('theme_dentist_output', 'print_inclinic_form'),20);
 
     } if(self::is_page_type('campaign')){
-      clog('campaign');
       add_action('do_theme_content', array('theme_campaign_output', 'print_content'),20);
 
     }else{

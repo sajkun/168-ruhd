@@ -23,6 +23,7 @@ class theme_dentist_output{
       $cat[] = $c->name;
     }
 
+
     $title_pirces = explode(' ', $obj->post_title);
     $number       = ceil(count($title_pirces)/2);
     $title_pirces[$number] = '<span class="marked">'. $title_pirces[$number];
@@ -30,8 +31,10 @@ class theme_dentist_output{
 
     $image_id = get_post_thumbnail_id($obj->ID);
 
+    $prefix = get_field('prefix', $obj->ID)?: '';
+
     $args = array(
-      'title'     =>   'Dr '. get_field('first_name', $obj->ID) . ' '.get_field('last_name', $obj->ID),
+      'title'     =>    $prefix . get_field('first_name', $obj->ID) . ' '.get_field('last_name', $obj->ID),
       'category' => implode(', ', $cat),
       'bg_color' => '#f8e8d8',
       'grade'    => get_field('grades', $obj->ID),

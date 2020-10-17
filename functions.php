@@ -102,6 +102,7 @@ class velesh_init_theme{
     add_image_size('trt_lg', 511, 560, true);
     add_image_size('trt_sm', 506, 274, true);
     add_image_size('before_after', 580, 320, true);
+    add_image_size('dentist_photo', 360, 503, true);
  }
 
   /**
