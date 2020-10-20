@@ -29,6 +29,17 @@ class WPBakeryShortCode_pricing_elements extends WPBakeryShortCode {
 
     $treatments_group = array();
 
+    $pricing_count = array(
+      'London' => array(
+        'Consultations' => 0,
+        'Treatments' => 0,
+      ),
+      'Manchester' => array(
+        'Consultations' => 0,
+        'Treatments' => 0,
+      ),
+    );
+
     foreach ($treatments as $t) {
       $type = get_field('treatment_type', $t->ID);
       $type = $type?: 'Treatments';
@@ -41,14 +52,21 @@ class WPBakeryShortCode_pricing_elements extends WPBakeryShortCode {
 
       $pricing_data = array();
 
-
       if($pricing){
+        $cities = array();
         foreach ($pricing as $p) {
           if(!$pricing_data[$p['city']]){
             $pricing_data[$p['city']]  = array();
           }
 
            $pricing_data[$p['city']][] = $p;
+
+
+          if(!in_array($p['city'], $cities)){
+            $pricing_count[$p['city']][$type]++;
+            $cities[] = $p['city'];
+          }
+
         }
       }
 
@@ -59,6 +77,7 @@ class WPBakeryShortCode_pricing_elements extends WPBakeryShortCode {
     }
 
     $args = array(
+      'pricing_count' => $pricing_count,
       'treatments' => $treatments_group,
     );
 
