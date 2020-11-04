@@ -321,8 +321,9 @@ class theme_content_output{
     $args = array(
       'form_online'    => $form_online,
       'form_inclicnic' => $form_inclicnic,
-      'text_cta'      => get_option('mobile_text_cta'),
-      'price'         => get_option('mobile_price_value'),
+      'text_cta'      => get_field('cta_title', $obj->ID)?:get_option('mobile_text_cta'),
+      'price'         => get_field('cta_price', $obj->ID)?:get_option('mobile_price_value'),
+      'per_month'     => get_field('per_month', $obj->ID),
     );
 
     print_theme_template_part('mobile-cta', 'globals', $args);

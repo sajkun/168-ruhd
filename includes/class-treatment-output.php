@@ -92,7 +92,6 @@ class theme_treatment_output{
     $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
     $form_inclicnic    = ($form_id)? do_shortcode($shortcode): false;
 
-    clog(get_field('before_after_items', $obj->ID));
 
      $args = array(
        'obj'    => $obj,
@@ -127,8 +126,14 @@ class theme_treatment_output{
     }
   }
 
+  /**
+  * @deprecated
+  */
+
   public static function print_mobile_cta(){
 
+    $obj = get_queried_object();
+    $args = array();
 
     print_theme_template_part('mobile-cta', 'treatment', $args);
   }

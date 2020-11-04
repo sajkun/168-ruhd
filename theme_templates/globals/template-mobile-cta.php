@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php endif ?>
 
         <?php if ($price): ?>
-        <p>from only <span class="price">£<?php echo $price; ?> p/mo</span></p>
+        <p>from only <span class="price">£<?php echo $price;  if($per_month): ?> p/mo<?php endif;?></span></p>
         <?php endif ?>
       </div>
       <div class="col-6 text-right valign-center">
