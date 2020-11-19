@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<header class="site-header <?php echo $contrast? 'contrast-header': ''; ?>">
+<header class="site-header <?php echo $contrast? 'contrast-header': ''; ?> <?php echo $contrast2? 'contrast': ''; ?>">
   <div class="site-header__top hide-tablet">
     <div class="container">
       <div class="row">

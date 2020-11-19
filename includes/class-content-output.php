@@ -20,6 +20,7 @@ class theme_content_output{
   */
   public static function print_header(){
     $obj_id = get_queried_object_id();
+    $obj    = get_queried_object();
 
     $main_menu = wp_nav_menu( array(
       'theme_location'  => 'main_menu',
@@ -60,10 +61,11 @@ class theme_content_output{
     $plugins_active = get_option('active_plugins');
 
     $args = array(
-      'show_intercom' => in_array('intercom/bootstrap.php', $plugins_active ),
-      'main_menu'   => $main_menu,
+      'show_intercom'=> in_array('intercom/bootstrap.php', $plugins_active ),
+      'main_menu'    => $main_menu,
       'clinics_menu' => $clinics_menu,
-      'contrast' => get_post_meta( $obj_id , 'invert_header',true),
+      'contrast'     => get_post_meta( $obj_id , 'invert_header',true) || $obj->post_type == 'theme_clinics',
+      'contrast2'     =>  $obj->post_type == 'theme_clinics',
     );
     print_theme_template_part('header', 'globals', $args);
   }

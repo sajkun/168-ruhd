@@ -28,7 +28,8 @@ class velesh_theme_customizer{
 
     $plugins_active = get_option('active_plugins');
 
-    if(in_array( 'wpforms-lite/wpforms.php',  $plugins_active)){
+
+    if(in_array( 'wpforms-lite/wpforms.php',  $plugins_active) || in_array( 'wpforms/wpforms.php',  $plugins_active)){
       $this->add_forms_section( $wp_customize );
     }
 
@@ -262,6 +263,28 @@ class velesh_theme_customizer{
          )
       );
 
+
+      $wp_customize->add_setting(
+          'clinic_subscription_form',
+          array(
+              'default'    => '',
+              'transport'  => 'postMessage',
+              'type'       => 'option',
+          )
+      );
+
+
+      $wp_customize->add_control(
+        'clinic_subscription_form',
+        array(
+            'description' => 'should have a text field with a value =  %clinic_name% and class "hidden"',
+            'section'   => 'theme_forms_section',
+            'label'     => __('Clinic Book form', 'theme-translations'),
+            'type'      => 'select',
+            'settings'  => 'clinic_subscription_form',
+             'choices' => $choices
+         )
+      );
   }
 
   /**

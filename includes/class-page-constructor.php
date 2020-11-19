@@ -25,6 +25,7 @@ class theme_construct_page{
     add_action('do_theme_header', array('theme_content_output', 'print_header'));
     add_action('do_theme_footer', array('theme_content_output', 'print_footer'));
 
+
     if(self::is_page_type('treatment')){
       add_action('do_theme_content', array('theme_treatment_output', 'print_welcome_screen'));
       add_action('do_theme_content', array('theme_treatment_output', 'print_content'),20);
@@ -37,13 +38,18 @@ class theme_construct_page{
       add_action('do_theme_content', array('theme_dentist_output', 'print_content'),20);
       add_action('do_theme_after_footer', array('theme_dentist_output', 'print_inclinic_form'),20);
 
-    } if(self::is_page_type('campaign')){
+    } else if(self::is_page_type('clinics')){
+
+      add_action('do_theme_content', array('theme_clinics_output', 'print_welcome_screen'));
+      add_action('do_theme_content', array('theme_clinics_output', 'print_content'),20);
+      add_action('do_theme_after_footer', array('theme_clinics_output', 'print_form'),20);
+
+    } else if(self::is_page_type('campaign')){
       add_action('do_theme_content', array('theme_campaign_output', 'print_content'),20);
 
     }else{
       add_action('do_theme_content', array('theme_content_output', 'print_content_page'));
     }
-
 
     if (wp_is_mobile()) {
       add_action('do_theme_after_footer', array('theme_content_output', 'print_mobile_cta'));
@@ -85,6 +91,9 @@ class theme_construct_page{
         break;
       case 'campaign':
         return isset($obj->post_type) && 'theme_campaign' === $obj->post_type;
+        break;
+      case 'clinics':
+        return isset($obj->post_type) && 'theme_clinics' === $obj->post_type;
         break;
     }
   }

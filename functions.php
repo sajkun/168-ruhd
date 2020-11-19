@@ -35,7 +35,7 @@ class velesh_init_theme{
   public $main_script_slug = 'theme-main-script-dev1';
 
   /* svg sprites files slug for local storage */
-  public $svg_sprite_slug = 'svg_sprite_168';
+  public $svg_sprite_slug = 'svg_sprite_168-2';
 
 
   /**
@@ -103,6 +103,9 @@ class velesh_init_theme{
     add_image_size('trt_sm', 506, 274, true);
     add_image_size('before_after', 580, 320, true);
     add_image_size('dentist_photo', 360, 503, true);
+    add_image_size('size1', 252, 352, true);
+    add_image_size('size2', 252, 176, true);
+    add_image_size('size3', 252, 252, true);
  }
 
   /**
