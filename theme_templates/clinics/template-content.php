@@ -77,20 +77,19 @@ if ( ! defined( 'ABSPATH' ) ) {
           'size2',
           'size3',
           'size1',
-          'size2',
           'size1',
           'size3',
+          'size2',
           'size2',
         );
          foreach ($image_ids as $img_id):
           $img = wp_get_attachment_image_url($img_id,  $sizes[$counter]);
-
           printf('<div class="grid-item"><img src="%s" alt="" class="%s"></div>', $img, $sizes[$counter]);
           ?>
 
         <?php
         $counter++;
-        $counter = $counter < 8?:0;
+        $counter = $counter < 8? $counter:0;
          endforeach ?>
       </div>
     </div>

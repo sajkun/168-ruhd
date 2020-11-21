@@ -42,8 +42,6 @@ class velesh_init_theme{
    * theme init defauls action
    */
   public function __construct(){
-
-
     $this->define_theme_globals();
     $this->define_theme_supports();
     $this->define_image_sizes();
@@ -93,7 +91,6 @@ class velesh_init_theme{
     ));
   }
 
-
   /**
    * defines image sizes for attachments
    */
@@ -115,9 +112,12 @@ class velesh_init_theme{
    */
   public function enqueue_scripts_styles_front(){
     wp_enqueue_style( 'before-after', THEME_URL.'/assets/libs/before-after/before-after.min.css', THEME_VERSION );
+    wp_enqueue_style( 'owl-carousel', THEME_URL.'/assets/libs/owlcarousel/css/owl.carousel.min.css', THEME_VERSION );
     wp_enqueue_style( $this->main_style_slug, THEME_URL.$this->main_style, THEME_VERSION );
 
-    wp_enqueue_script('owl-carousel',THEME_URL.'/assets/libs/before-after/before-after.min.js', array(), THEME_VERSION, true);
+    wp_enqueue_script('before-after',THEME_URL.'/assets/libs/before-after/before-after.min.js', array(), THEME_VERSION, true);
+
+    wp_enqueue_script('owl-carousel',THEME_URL.'/assets/libs/owlcarousel/js/owl.carousel.min.js', array(), THEME_VERSION, true);
     wp_enqueue_script($this->main_script_slug, THEME_URL.$this->main_script, array('jquery'), THEME_VERSION, true);
 
   }

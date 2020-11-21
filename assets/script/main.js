@@ -89,6 +89,25 @@ jQuery(document).on('click', '.popup-destroy',function(e){
     jQuery(this).remove();
   }
 })
+
+
+function init_blog_posts(){
+  if(jQuery('.post-wrapper').length){
+    var owl = jQuery('.post-wrapper .owl-carousel');
+
+    owl.owlCarousel({
+      margin: 0,
+      loop: true,
+      autoWidth: true,
+      autoplay: true,
+      dots: false,
+      center: true,
+      slideBy: 1,
+      autoplayTimeout: 10000,
+      autoplaySpeed: 1600,
+    })
+  }
+}
 jQuery('.dropdown-trigger').click(function(event) {
   jQuery(this).closest('.site-header').toggleClass('active');
 });
@@ -169,6 +188,17 @@ jQuery('.tabs__header-item').click(function(e) {
   var target = jQuery(this).attr('href');
   jQuery(target).slideDown().siblings('.tabs__body-item').slideUp();
 });
+
+jQuery(document).on('click', '.mobile-menu-toggle', function(){
+  jQuery('.mobile-menu-wrapper').addClass('shown');
+})
+
+jQuery(document).on('click', '.close-mobile-menu', function(){
+  jQuery('.mobile-menu-wrapper').removeClass('shown');
+})
+jQuery(document).on('click', '.icon-close-destroy', function(){
+  jQuery(this).closest('.popup-destroy').remove();
+})
 var Cookie =
 {
    set: function(name, value, days)
@@ -329,15 +359,23 @@ jQuery(document).ready(function(){
     jQuery(el).addClass('show');
   });
 
+  init_blog_posts();
 
   jQuery('.masonry-gallery').masonry({
     itemSelector: '.grid-item',
     columnWidth: 266,
-    percentPosition: true
+    // percentPosition: true
   });
 
   jQuery('#gallery').slideUp();
 })
+
+
+// jQuery('[href=gallery]').click(function(){
+//   setTimeout(function(){
+//     jQuery('#gallery').find('.masonry-gallery').masonry()
+//   },300);
+// })
 function show_popup(id){
   jQuery('#'+id).addClass('shown');
 }

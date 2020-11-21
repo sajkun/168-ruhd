@@ -19,6 +19,8 @@ class theme_content_output{
   * @hookedto
   */
   public static function print_header(){
+    if(!function_exists('get_field')){return;}
+
     $obj_id = get_queried_object_id();
     $obj    = get_queried_object();
 
@@ -64,10 +66,69 @@ class theme_content_output{
       'show_intercom'=> in_array('intercom/bootstrap.php', $plugins_active ),
       'main_menu'    => $main_menu,
       'clinics_menu' => $clinics_menu,
-      'contrast'     => get_post_meta( $obj_id , 'invert_header',true) || $obj->post_type == 'theme_clinics',
-      'contrast2'     =>  $obj->post_type == 'theme_clinics',
+      'contrast'     => get_post_meta( $obj_id , 'invert_header',true) || $obj->post_type == 'theme_clinics' || is_category() || is_home(),
+      'contrast2'     =>  $obj->post_type == 'theme_clinics' || is_category() || is_home(),
     );
+
     print_theme_template_part('header', 'globals', $args);
+  }
+
+
+  /**
+  * prints mobile menu
+  *
+  * @hookedto
+  */
+  public static function print_mobile_menu(){
+    if(!function_exists('get_field')){return;}
+
+    $obj_id = get_queried_object_id();
+    $obj    = get_queried_object();
+
+    $main_menu = wp_nav_menu( array(
+      'theme_location'  => 'main_menu',
+      'menu'            => '',
+      'container'       => 'nav',
+      'container_class' => 'mobile-menu',
+      'container_id'    => '',
+      'menu_class'      => 'main-menu-mobile',
+      'menu_id'         => '',
+      'echo'            => false,
+      'fallback_cb'     => '',
+      'before'          => '',
+      'after'           => '',
+      'link_before'     => '',
+      'link_after'      => '',
+      'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+      'depth'           => 1,
+    ) );
+
+    $clinics_menu = wp_nav_menu( array(
+      'theme_location'  => 'clinics_menu',
+      'menu'            => '',
+      'container'       => 'nav',
+      'container_class' => 'mobile-menu',
+      'container_id'    => '',
+      'menu_class'      => 'main-menu-mobile',
+      'menu_id'         => '',
+      'echo'            => false,
+      'fallback_cb'     => '',
+      'before'          => '',
+      'after'           => '',
+      'link_before'     => '',
+      'link_after'      => '',
+      'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+      'depth'           => 1,
+    ) );
+
+    $args = array(
+      'phone' => '+44 (0)20 3904 7655',
+      'main_menu' => $main_menu,
+      'clinics_menu' => $clinics_menu,
+    );
+
+    print_theme_template_part('mobile-menu', 'globals', $args);
+
   }
 
 
@@ -89,6 +150,7 @@ class theme_content_output{
 * @see  [theme_folder]/includes/class-page-constructor.php line 23
   */
   public static function print_footer(){
+   if(!function_exists('get_field')){return;}
 
     $clinic_args = array(
       'post_type' => 'theme_clinics',
@@ -329,5 +391,66 @@ class theme_content_output{
     );
 
     print_theme_template_part('mobile-cta', 'globals', $args);
+  }
+
+
+  public static function print_categories(){
+    $obj = get_queried_object();
+
+    $categories = get_categories( array(
+      'taxonomy'     => 'category',
+      'type'         => 'post',
+      'hide_empty'   => 0,
+    ));
+
+    $args = array(
+      'blog_url'   => get_permalink(get_option('page_for_posts')),
+      'categories' => $categories,
+      'obj'        => $obj,
+    );
+
+    print_theme_template_part('category-list', 'globals', $args);
+  }
+
+
+  public static function print_all_posts(){
+
+    if(!function_exists('get_field')) {return;}
+
+    if(is_home()){
+      global $posts;
+    }
+    if(is_category()){
+      $category = get_queried_object();
+
+      $posts = get_posts(array(
+        'posts_per_page' => -1,
+        'posts_type'  => 'post',
+        'category' => $category->term_id,
+      ));
+
+
+    }
+    echo "<div class='post-wrapper'>";
+    echo '<div class="container">';
+    echo '<div class="owl-carousel ">';
+
+      foreach ($posts as $key => $post) {
+
+        $args = array(
+          'category' => get_field('sub_title', $post->ID),
+          'title'    => $post->post_title,
+          'bg_img'   => get_the_post_thumbnail_url($post, 'full'),
+          'video_url'   => get_field('video_url', $post->ID),
+          'name'   => get_field('feed_name', $post->ID),
+          'permalink'   => get_permalink( $post),
+        );
+
+        print_theme_template_part('post-preview', 'globals', $args);
+      }
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
+
   }
 }

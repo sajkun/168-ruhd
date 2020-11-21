@@ -6,6 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class theme_clinics_output{
   public static function print_welcome_screen(){
+
+    if(!function_exists('get_field')){
+      return;
+    }
+
     $obj = get_queried_object();
     $phone = get_field('phone', $obj->ID);
     $phone = $phone ? preg_replace('/\D/', '', $phone) : $phone;
@@ -26,6 +31,11 @@ class theme_clinics_output{
 
 
   public static function print_content(){
+
+    if(!function_exists('get_field')){
+      return;
+    }
+
     $obj = get_queried_object();
     $args = array(
       'open_hours' => get_field('opening_hours', $obj->ID),
@@ -34,8 +44,6 @@ class theme_clinics_output{
       'trains'     => get_field('train_tube_stations', $obj->ID),
       'image_ids'     => get_field('clinic_images', $obj->ID),
     );
-
-    clog($args);
 
     print_theme_template_part('content', 'clinics', $args);
   }

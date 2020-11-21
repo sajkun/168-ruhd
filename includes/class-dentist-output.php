@@ -53,6 +53,7 @@ class theme_dentist_output{
  }
 
   public static function print_content(){
+   if(!function_exists('get_field')){return;}
 
     global $wp_popup_forms;
     $obj = get_queried_object();
@@ -122,9 +123,8 @@ class theme_dentist_output{
     }
   }
 
-  public static function print_mobile_cta(){}
 
-   public static function print_inclinic_form(){
+  public static function print_inclinic_form(){
     if(!function_exists('get_field')){return;}
     $obj = get_queried_object();
     $first_name =  get_field('first_name', $obj->ID);
@@ -149,5 +149,5 @@ class theme_dentist_output{
     );
 
     print_theme_template_part('register-popup', 'globals', $args);
-   }
+  }
 }

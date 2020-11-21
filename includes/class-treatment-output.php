@@ -14,9 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class theme_treatment_output{
   public static function print_welcome_screen(){
 
-    if(!function_exists('get_field')){
-      return;
-    }
+    if(!function_exists('get_field')){return; }
 
     $obj = get_queried_object();
 
@@ -62,7 +60,6 @@ class theme_treatment_output{
   }
 
   public static function print_content(){
-
     $obj = get_queried_object();
 
     if(function_exists('get_field')){
@@ -71,30 +68,25 @@ class theme_treatment_output{
 
       $pricing_items_city = array();
       if ($pricing_items) {
-
-      foreach ($pricing_items as $key => $item) {
-
-        if(!isset($pricing_items_city[$item['city']])){
-          $pricing_items_city[$item['city']] = array();
+        foreach ($pricing_items as $key => $item) {
+          if(!isset($pricing_items_city[$item['city']])){
+            $pricing_items_city[$item['city']] = array();
+          }
+          $pricing_items_city[$item['city']][] = $item;
         }
-
-        $pricing_items_city[$item['city']][] = $item;
       }
-    }
 
-    $form_id = get_option('treatment_subscription_form_online');
+      $form_id = get_option('treatment_subscription_form_online');
 
-    $shortcode = sprintf('[wpforms id="%s"]',  $form_id);
-    $form    = do_shortcode($shortcode);
-    $form_online = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
+      $shortcode = sprintf('[wpforms id="%s"]',  $form_id);
+      $form    = do_shortcode($shortcode);
+      $form_online = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
 
-    $form_id = get_option('treatment_subscription_form_inclicnic');
-    $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
-    $form_inclicnic    = ($form_id)? do_shortcode($shortcode): false;
+      $form_id = get_option('treatment_subscription_form_inclicnic');
+      $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
+      $form_inclicnic    = ($form_id)? do_shortcode($shortcode): false;
 
-    clog(get_field('before_after_items', $obj->ID));
-
-     $args = array(
+      $args = array(
        'obj'    => $obj,
        'form_online'    => $form_online,
        'form_inclicnic' => $form_inclicnic,
@@ -122,8 +114,8 @@ class theme_treatment_output{
             'text'    => apply_filters('the_content', get_field('what_is', $obj->ID)),
          ),
        ),
-     );
-     print_theme_template_part('content', 'treatment', $args);
+      );
+      print_theme_template_part('content', 'treatment', $args);
     }
   }
 

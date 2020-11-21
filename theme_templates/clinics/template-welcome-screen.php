@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-
 <div class="container-xxl no-padding">
   <div class="carousel clinics no-bg">
     <div class="row">
@@ -24,13 +23,13 @@ if ( ! defined( 'ABSPATH' ) ) {
           <div class="spacer-h-lg-50"></div>
         </div>
 
-         <div class="spacer-h-150 spacer-h-md-100"></div>
+         <div class="spacer-h-0 spacer-h-md-100"></div>
       </div>
       <div class="col-md-6 img valign-bottom">
         <?php if ($video_url): ?>
-        <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class="hide-mobile trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+        <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
         <?php endif ?>
-        <img src="<?php echo $image; ?>" class="img  hide-mobile" alt="">
+        <img src="<?php echo $image; ?>" class="img mobile-friendly" alt="">
       </div>
     </div>
 

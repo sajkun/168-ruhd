@@ -12,9 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-
           <div class="row no-gutters">
-
             <a href="tel:+44 (0)20 3904 7655" class="call-link">
               <svg class="svg-icon-call"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-call"></use></svg>
               <span>+44 (0)20 3904 7655</span>
