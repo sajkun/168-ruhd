@@ -59,6 +59,10 @@ if ( ! defined( 'ABSPATH' ) ) {
          <div class="spacer-h-150 spacer-h-md-100"></div>
       </div>
       <div class="col-md-6 img">
+        <?php if ($video_url): ?>
+        <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+        <?php endif ?>
+
         <img src="<?php echo $image1; ?>" class="img  show-mobile" alt="">
       </div>
     </div>

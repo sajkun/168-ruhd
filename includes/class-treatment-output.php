@@ -36,6 +36,7 @@ class theme_treatment_output{
       'title'     => implode(' ', $title_pirces),
       'category' => implode(', ', $cat),
       'about'    => $obj->post_excerpt,
+      'video_url' =>  get_field('video_url', $obj->ID),
     );
 
     $form_id    = get_option('treatment_subscription_form_inclicnic');
