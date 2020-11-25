@@ -50,8 +50,6 @@ class theme_construct_page{
 
       add_action('do_theme_content', array('theme_post_output', 'print_content'),20);
 
-      add_action('do_theme_after_footer', array('theme_post_output', 'print_form'),20);
-
     } else if(self::is_page_type('clinics')){
 
       add_action('do_theme_content', array('theme_clinics_output', 'print_welcome_screen'));

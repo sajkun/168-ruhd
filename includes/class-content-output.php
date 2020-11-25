@@ -62,12 +62,17 @@ class theme_content_output{
 
     $plugins_active = get_option('active_plugins');
 
+    $default_form_id = get_option('default_subscription_form');
+
     $args = array(
-      'show_intercom'=> in_array('intercom/bootstrap.php', $plugins_active ),
+      'show_intercom'=> in_array('intercom/bootstrap.php', $plugins_active ) && !get_field('replace_chat',$obj_id),
+      'replace_chat' => get_field('replace_chat',$obj_id),
       'main_menu'    => $main_menu,
       'clinics_menu' => $clinics_menu,
       'contrast'     => get_post_meta( $obj_id , 'invert_header',true) || $obj->post_type == 'theme_clinics' || is_category() || is_home(),
       'contrast2'     =>  $obj->post_type == 'theme_clinics' || is_category() || is_home(),
+      'form_id'   => md5(sprintf('[wpforms id="%s"]',  $default_form_id)),
+      'no_toggle_contrast' => get_post_meta( $obj_id , 'invert_header',true) || $obj->post_type == 'theme_clinics' || is_category() || is_home()? 'no-toggle' : '',
     );
 
     print_theme_template_part('header', 'globals', $args);
@@ -174,7 +179,8 @@ class theme_content_output{
     $date       = new DateTime();
     $year       = $date->format('Y');
     $plugins_active = get_option('active_plugins');
-        $default_form_id = get_option('default_subscription_form');
+    $default_form_id = get_option('default_subscription_form');
+
     $args = array(
       'copyrights'  => str_replace('{year}', $year, $copyrights),
       'footer_partners' =>$footer_partners?explode(',',$footer_partners): false,
@@ -212,6 +218,8 @@ class theme_content_output{
 
     global $wp_popup_forms;
 
+    $obj = get_queried_object();
+
     $forms = array(
       'default_subscription_form' => array(
         'title' => 'Online <span class="marked">Visit</span>',
@@ -248,7 +256,11 @@ class theme_content_output{
         $options .= sprintf('<option value="%1$s" >%1$s</option>', $t->post_title);
       }
 
-      $output    = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $output );
+      if(theme_construct_page::is_page_type('treatment')){
+        $output    = str_replace('<option value="%treatments%" >%treatments%</option>',"<option selected='selected' value='{$obj->post_title}' >{$obj->post_title}</option>" , $output );
+      }else{
+        $output    = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $output );
+      }
 
       unset($wp_popup_forms[$form_id]);
       $args = array(
@@ -263,7 +275,12 @@ class theme_content_output{
 
     foreach ($wp_popup_forms as $form_id => $data) {
       $output    = do_shortcode($data['shortcode']);
-      $output    = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $output );
+
+      if(theme_construct_page::is_page_type('treatment')){
+        $output    = str_replace('%treatments%', $obj->post_title, $output );
+      }else{
+        $output    = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $output );
+      }
 
       $args = array(
         'form_id' =>  $form_id,
@@ -386,6 +403,11 @@ class theme_content_output{
       'form_online'    => $form_online,
       'form_inclicnic' => $form_inclicnic,
       'text_cta'      => get_field('cta_title', $obj->ID)?:get_option('mobile_text_cta'),
+
+      'mobile_stars'      => get_field('feed_stars', $obj->ID)?:get_option('mobile_stars'),
+
+      'mobile_rate'      => get_field('feed_rate_desc', $obj->ID)?:get_option('mobile_rate'),
+
       'price'         => get_field('cta_price', $obj->ID)?:get_option('mobile_price_value'),
       'per_month'     => get_field('per_month', $obj->ID),
     );

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="mobile-trigger-popup">
+<div class="mobile-trigger-popup dark">
   <div class="container-md">
     <div class="row">
       <div class="col-6 valign-center">
@@ -27,9 +27,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
       </div>
       <div class="col-6 text-right valign-center">
-        <a href="javascript:void(0)" class="book-btn book-btn_dark " onclick="show_popup('<?php echo $form_id ?>')">
+        <a href="javascript:void(0)" class="book-btn book-btn_light " onclick="show_popup('<?php echo $form_id ?>')">
           <img src="<?php echo THEME_URL;?>/assets/images/svg/ruh.svg" alt="">
-          <span>Start Free</span>
+          <span>Book</span>
         </a>
       </div>
     </div>

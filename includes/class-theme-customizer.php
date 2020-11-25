@@ -75,7 +75,7 @@ class velesh_theme_customizer{
       );
 
       $wp_customize->add_setting(
-          'mobile_price_value',
+          'mobile_stars',
           array(
               'default'    => '',
               'transport'  => 'postMessage',
@@ -84,13 +84,33 @@ class velesh_theme_customizer{
       );
 
       $wp_customize->add_control(
-        'mobile_price_value',
+        'mobile_stars',
         array(
             'section'   => 'theme_mobile_section',
-            'label'     => __('Call to action price', 'theme-translations'),
-            'description'     => __('Place only digits and separators here', 'theme-translations'),
+            'label'     => __('Number of stars to show', 'theme-translations'),
+            'description'     => __('Place only digits here', 'theme-translations'),
             'type'      => 'text',
-            'settings'  => 'mobile_price_value',
+            'settings'  => 'mobile_stars',
+         )
+      );
+
+      $wp_customize->add_setting(
+          'mobile_rate',
+          array(
+              'default'    => '',
+              'transport'  => 'postMessage',
+              'type'       => 'option'
+          )
+      );
+
+      $wp_customize->add_control(
+        'mobile_rate',
+        array(
+            'section'   => 'theme_mobile_section',
+            'label'     => __('Rating text, for example: 4.8/5 Excellent', 'theme-translations'),
+            'description'     => __('Place only digits here', 'theme-translations'),
+            'type'      => 'text',
+            'settings'  => 'mobile_rate',
          )
       );
   }

@@ -94,6 +94,22 @@ class theme_dentist_output{
     $output    = str_replace('%dentist_first_name%', $first_name, $output );
     $form_inclicnic    = ($form_id)?    $output : false;
 
+    $smile_stories = get_field('smile_stories', $obj->ID);
+
+    $smile_stories_data = array();
+
+    if($smile_stories){
+      foreach ($smile_stories as $story) {
+        $smile_stories_data[] = array(
+          'title' => $story->post_title,
+          'video_url' => get_field('video_url', $story->ID),
+          'category'  => get_field('sub_title', $story->ID),
+          'url'       => get_permalink($story),
+          'bg_img'    => get_the_post_thumbnail_url($story, 'full'),
+        );
+      }
+    }
+
      $args = array(
        'form_online'    => $form_online,
        'form_inclicnic' => $form_inclicnic,
@@ -108,7 +124,7 @@ class theme_dentist_output{
             "show"    => true,
             'display' => 'none',
             'title'   => get_field('smile_stories_title', $obj->ID),
-            'text'   =>  apply_filters('the_content',get_field('smile_stories', $obj->ID)),
+            'smile_stories'   => $smile_stories_data,
          ),
          'about'    => array(
             "show"    => true,

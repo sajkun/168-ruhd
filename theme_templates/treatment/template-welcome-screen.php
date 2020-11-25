@@ -27,6 +27,22 @@ if ( ! defined( 'ABSPATH' ) ) {
     }
   }
 </style>
+<?php if (wp_is_mobile()): ?>
+<div class="clearfix mobile-menu-wrapper__row">
+      <a href="tel:<?php echo $phone?>" class="book-btn book-btn_light">
+    <svg class="icon svg-icon-phone2"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone2"></use></svg>
+    <span>Call Us</span>
+  </a>
+
+  <a href="javascript:void(0)" class="book-btn book-btn_light " onclick="Intercom('show')">
+    <img src="<?php echo THEME_URL?>/assets/images/svg/chat.svg" alt="" class="chat-icon">
+    <span> Live Chat </span>
+    <span class="status online">Online</span>
+  </a>
+
+</div>
+<div class="spacer-h-10"></div>
+<?php endif ?>
 
 <div class="container-xxl no-padding">
   <div class="carousel treatment no-bg">

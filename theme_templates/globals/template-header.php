@@ -4,10 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit; // Exit if accessed directly.
 }
 
-
 ?>
 
-<header class="site-header <?php echo $contrast? 'contrast-header': ''; ?> <?php echo $contrast2? 'contrast': ''; ?>">
+<header class="site-header <?php echo $contrast? 'contrast-header': ''; ?> <?php echo $contrast2? 'contrast': ''; ?> <?php echo $no_toggle_contrast; ?>">
   <div class="site-header__top hide-tablet">
     <div class="container">
       <div class="row">
@@ -41,8 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-
-          <div class="mobile-menu-toggle"><span></span></div>
+          <div class="mobile-menu-toggle equis"><span></span></div>
 
           <a href="<?php echo HOME_URL; ?>" class="logo">
             <img src="<?php echo THEME_URL ?>/assets/images/svg/logo.svg" alt="" class="regular">
@@ -64,6 +62,14 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="live-chat__text">Live Chat</span>
           </a>
           <?php endif ?>
+
+          <?php if ($replace_chat): ?>
+          <a href="javascript:void(0)" class="book-btn " onclick="show_popup('<?php echo $form_id; ?>')">
+            <img src="<?php echo THEME_URL ?>/assets/images/svg/ruh.svg" alt="">
+            <span>Book</span>
+          </a>
+          <?php endif ?>
+
         </div>
 
       </div><!-- row -->

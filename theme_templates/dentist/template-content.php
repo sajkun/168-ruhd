@@ -24,6 +24,19 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php echo $p['text'] ; ?>
                   </div>
                 <?php endif ?>
+                <?php if($p['smile_stories'] ): ?>
+
+                  <div class="row smile-stories-cont justify-content-between">
+
+
+                    <?php
+                     foreach ($p['smile_stories']  as $story) {
+                       print_theme_template_part('story', 'dentist', $story);
+                     }
+                    ?>
+                  </div>
+
+                <?php endif ?>
 
                 <?php if($p['notification_title'] || $p['notification_text']  ): ?>
                   <div class="info-block">

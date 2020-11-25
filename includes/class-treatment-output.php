@@ -33,6 +33,7 @@ class theme_treatment_output{
     $title_pirces[]         = '<span>';
 
     $args = array(
+      'phone'   => '+44 (0)20 3904 7655',
       'title'     => implode(' ', $title_pirces),
       'category' => implode(', ', $cat),
       'about'    => $obj->post_excerpt,

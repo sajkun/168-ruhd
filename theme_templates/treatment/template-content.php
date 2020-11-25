@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="col-md-7">
 
               <?php foreach ($pages as $id => $p):
-                clog($p);
                 if (!$p['show']) {
                   continue;
                 }

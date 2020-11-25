@@ -4,25 +4,38 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit; // Exit if accessed directly.
 }
 ?>
-
-<div class="mobile-trigger-popup">
+<div class="mobile-trigger-popup <?php if (is_home() || theme_construct_page::is_page_type('clinics')){ echo ' dark ' ;} ?>">
   <div class="container-md">
-    <div class="row">
-      <div class="col-6 valign-center">
-        <?php if ($text_cta): ?>
-        <b><?php echo $text_cta; ?></b>
-        <?php endif ?>
+    <div class="row no-gutters">
+      <div class="col valign-center">
+        <div class="cta-rate">
 
-        <?php if ($price): ?>
-        <p>from only <span class="price">£<?php echo $price;  if($per_month): ?> p/mo<?php endif;?></span></p>
-        <?php endif ?>
+          <?php if ($text_cta): ?>
+          <span class="cta-rate__title">
+            <?php echo $text_cta; ?>
+          </span>
+          <?php endif ?>
+          <div class="cta-rate__stars">
+
+            <?php for($i = 0; $i < $mobile_stars; $i++){?>
+               <img src="<?php echo THEME_URL?>/assets/images/star.jpg" alt="">
+            <?php
+             }
+            ?>
+
+            <?php if ($mobile_rate): ?>
+              <span class="cta-rate__text">
+                  <?php echo $mobile_rate; ?>
+              </span>
+            <?php endif ?>
+          </div>
+        </div>
       </div>
-      <div class="col-6 text-right valign-center">
-        <a href="javascript:void(0)" class="book-btn book-btn_dark " onclick="show_popup('popup-mobile-cta')">
+
+        <a href="javascript:void(0)" class="book-btn valign-center <?php if (is_home() || theme_construct_page::is_page_type('clinics')){ echo ' book-btn_light  ' ;}else{ echo ' book-btn_dark  '; } ?>" onclick="show_popup('popup-mobile-cta')">
           <img src="<?php echo THEME_URL;?>/assets/images/svg/ruh.svg" alt="">
           <span>Book</span>
         </a>
-      </div>
     </div>
   </div>
 </div>
@@ -95,6 +108,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             </p>
           </div>
         </div>
-       </div>
+     </div>
   </div>
 </div>
