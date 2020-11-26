@@ -53,10 +53,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="col-12 menu-holder">
       <ul>
         <li class="active"><a href="#about">About <?php echo $name ?></a></li>
+        <?php if ($smile_stories): ?>
         <li><a href="#smile">Smile Stories</a></li>
-        <li><a href="#insta">Instagram</a></li>
-      </ul>
+        <?php endif ?>
 
+        <?php if ($insta_url): ?>
+        <li><a href="<?php echo esc_url($insta_url);?>" target="_blank">Instagram</a></li>
+        <?php endif ?>
+      </ul>
 
       <?php if ($form_id): ?>
       <a href="javascript:void(0)" class="book-btn book-btn_dark hide-mobile" onclick="show_popup('<?php echo $form_id ?>')">

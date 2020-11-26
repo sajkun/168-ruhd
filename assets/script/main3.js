@@ -155,18 +155,21 @@ jQuery('.select-imitation li').click(function(e) {
 });
 
 jQuery('.menu-holder li a').click(function(e) {
-  e.preventDefault();
-  jQuery(this).closest('li').addClass('active').siblings('li').removeClass('active');
   var target = jQuery(this).attr('href');
+  if(target.search('#') >= 0){
+    e.preventDefault();
 
-    if(history.pushState) {
-        history.pushState(null, null, target);
-    }
-    else {
-        location.hash = target;
-    }
+    jQuery(this).closest('li').addClass('active').siblings('li').removeClass('active');
 
-  jQuery(target).slideDown().siblings('.page-item').slideUp();
+      if(history.pushState) {
+          history.pushState(null, null, target);
+      }
+      else {
+          location.hash = target;
+      }
+
+    jQuery(target).slideDown().siblings('.page-item').slideUp();
+  }
 });
 
 jQuery('.cta__item').click(function(e) {

@@ -41,7 +41,9 @@ class theme_dentist_output{
       'doctor_post'    => get_field('doctor_post', $obj->ID),
       'about'    => get_field('about', $obj->ID),
       'name'    => get_field('first_name', $obj->ID) ,
+      'insta_url'    => get_field('insta_url', $obj->ID) ,
       'image'    =>wp_get_attachment_image_url( $image_id, 'full'),
+      'smile_stories' => get_field('smile_stories', $obj->ID);
     );
 
     $form_id    = get_option('dentist_subscription_form_inclinic');
@@ -62,12 +64,10 @@ class theme_dentist_output{
 
     if(function_exists('get_field')){
 
-
     $form_id = get_option('dentist_subscription_form_online');
     $shortcode = sprintf('[wpforms id="%s"]',  $form_id);
 
     unset($wp_popup_forms[md5( $shortcode)]);
-
 
     $form    = do_shortcode($shortcode);
     $treatments = get_posts(array(
@@ -114,12 +114,6 @@ class theme_dentist_output{
        'form_online'    => $form_online,
        'form_inclicnic' => $form_inclicnic,
        'pages' => array(
-         'insta'     => array(
-            "show"    => true,
-            'display' => 'none',
-            'text'    => get_field('insta_text', $obj->ID),
-            'title'   => get_field('insta_title', $obj->ID),
-         ),
          'smile' => array(
             "show"    => true,
             'display' => 'none',
