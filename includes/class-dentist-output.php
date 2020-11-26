@@ -34,16 +34,16 @@ class theme_dentist_output{
     $prefix = get_field('prefix', $obj->ID)?: '';
 
     $args = array(
-      'title'     =>    $prefix . get_field('first_name', $obj->ID) . ' '.get_field('last_name', $obj->ID),
-      'category' => implode(', ', $cat),
-      'bg_color' => '#f8e8d8',
-      'grade'    => get_field('grades', $obj->ID),
-      'doctor_post'    => get_field('doctor_post', $obj->ID),
-      'about'    => get_field('about', $obj->ID),
-      'name'    => get_field('first_name', $obj->ID) ,
-      'insta_url'    => get_field('insta_url', $obj->ID) ,
-      'image'    =>wp_get_attachment_image_url( $image_id, 'full'),
-      'smile_stories' => get_field('smile_stories', $obj->ID);
+      'title'         =>    $prefix . get_field('first_name', $obj->ID) . ' '.get_field('last_name', $obj->ID),
+      'category'      => implode(', ', $cat),
+      'bg_color'      => '#f8e8d8',
+      'grade'         => get_field('grades', $obj->ID),
+      'doctor_post'   => get_field('doctor_post', $obj->ID),
+      'about'         => get_field('about', $obj->ID),
+      'name'          => get_field('first_name', $obj->ID) ,
+      'insta_url'     => get_field('insta_url', $obj->ID) ,
+      'image'         =>wp_get_attachment_image_url( $image_id, 'full'),
+      'smile_stories' => get_field('smile_stories', $obj->ID),
     );
 
     $form_id    = get_option('dentist_subscription_form_inclinic');
