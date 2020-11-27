@@ -8966,6 +8966,10 @@ ul {
   text-transform: uppercase;
 }
 
+.team-photo {
+  max-width: 430px !important;
+}
+
 .popup-destroy {
   position: fixed;
   z-index: 100;

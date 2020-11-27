@@ -42,11 +42,10 @@ if ( ! defined( 'ABSPATH' ) ) {
           <?php endif ?>
           <div class="spacer-h-lg-50"></div>
         </div>
-
-         <div class="spacer-h-150 spacer-h-md-100"></div>
+        <div class="spacer-h-150 spacer-h-md-100"></div>
       </div>
       <div class="col-md-6 img valign-bottom">
-        <img src="<?php echo $image; ?>" class="img  hide-mobile" alt="">
+        <img src="<?php echo $image; ?>" class="img team-photo hide-mobile" alt="" >
       </div>
     </div>
 
