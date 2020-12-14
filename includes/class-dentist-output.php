@@ -70,21 +70,28 @@ class theme_dentist_output{
     unset($wp_popup_forms[md5( $shortcode)]);
 
     $form    = do_shortcode($shortcode);
+
+
     $treatments = get_posts(array(
       'posts_per_page' => -1,
       'post_type' => 'theme_treatment'
     ));
 
+    $treatments     = get_field('dentists_treatments', $obj->ID)?: $treatments;
+    $dentist_clinic = get_field('dentist_clinic', $obj->ID);
     $options = '';
 
     foreach ($treatments as $t) {
       $selected = ($t->post_title === $obj->post_title)? 'selected="selected"' : '';
-      $options .= sprintf('<option value="%1$s" %2$s >%1$s</option>', $t->post_title,$selected );
+      $options .= sprintf('<option value="%1$s" %2$s >%1$s</option>', $t->post_title, $selected );
     }
 
-    $output    = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
-    $output    = str_replace('%dentist_name%',  $first_name.' '.$last_name, $output );
-    $output    = str_replace('%dentist_first_name%', $first_name, $output );
+    $output          = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
+    $output          = str_replace('%dentist_name%',  $first_name.' '.$last_name, $output );
+    $output          = str_replace('%dentist_first_name%', $first_name, $output );
+    $output          = str_replace('value="%theme_clinics%"', sprintf(' selected="selected" value="%s"',  $dentist_clinic->post_title), $output );
+    $output    = str_replace('%theme_clinics%', $dentist_clinic->post_title, $output );
+
     $form_online = ($form_id)?   $output : false;
     $form_id   = get_option('dentist_subscription_form_inclinic');
     $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
@@ -92,6 +99,8 @@ class theme_dentist_output{
     $form      = do_shortcode($shortcode);
     $output    = str_replace('%dentist_name%',  $first_name.' '.$last_name, $form );
     $output    = str_replace('%dentist_first_name%', $first_name, $output );
+    $output          = str_replace('value="%theme_clinics%"', sprintf(' selected="selected" value="%s"',  $dentist_clinic->post_title), $output );
+    $output    = str_replace('%theme_clinics%', $dentist_clinic->post_title, $output );
     $form_inclicnic    = ($form_id)?    $output : false;
 
     $smile_stories = get_field('smile_stories', $obj->ID);

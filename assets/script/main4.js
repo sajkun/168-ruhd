@@ -75,9 +75,12 @@ function update_popular_treatment(param){
 function play_video(url){
   if(!url) return;
 
-  if(url.indexOf('youtube') >= 0){
+  if(url.indexOf('youtu') >= 0){
 
-    var iframe = '<div class="popup-destroy"><div class="popup-destroy-inner"><i class="icon-close-destroy">×</i><iframe id="popup-iframe" src="'+url+'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>';
+    var _url = 'https://www.youtube.com/embed/';
+    var parts = url.split('\/');
+
+    var iframe = '<div class="popup-destroy"><div class="popup-destroy-inner"><i class="icon-close-destroy">×</i><iframe id="popup-iframe" src="'+_url+'/'+parts[parts.length -1]+'?autoplay=1&loop=0&rel=0&wmode=transparent" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>';
   }
 
   jQuery('.site-container').append(iframe);
@@ -111,7 +114,7 @@ function init_blog_posts(){
       dots: false,
       center: true,
       slideBy: 1,
-      autoplayTimeout: 10000,
+      autoplayTimeout: 100,
       autoplaySpeed: 1600,
     })
   }
@@ -155,47 +158,59 @@ jQuery('.select-imitation li').click(function(e) {
 });
 
 jQuery('.menu-holder li a').click(function(e) {
-  e.preventDefault();
-  jQuery(this).closest('li').addClass('active').siblings('li').removeClass('active');
   var target = jQuery(this).attr('href');
+  if(target.search('#') >= 0){
+    e.preventDefault();
 
-    if(history.pushState) {
-        history.pushState(null, null, target);
-    }
-    else {
-        location.hash = target;
-    }
+    jQuery(this).closest('li').addClass('active').siblings('li').removeClass('active');
 
-  jQuery(target).slideDown().siblings('.page-item').slideUp();
+      if(history.pushState) {
+          history.pushState(null, null, target);
+      }
+      else {
+          location.hash = target;
+      }
+
+    jQuery(target).slideDown().siblings('.page-item').slideUp();
+  }
 });
 
-jQuery('.cta__item').click(function(e) {
+jQuery('#_cta1 .cta__item').click(function(e) {
   e.preventDefault();
   jQuery(this).closest('.cta__item').addClass('active').siblings('.cta__item').removeClass('active');
 
   var target = jQuery(this).closest('.cta__item').data('target');
 
-  jQuery('.book-form-holder').addClass('hidden');
-  jQuery('.'+target).removeClass('hidden');
+  jQuery('#_cta2 .book-form-holder').addClass('hidden');
+  jQuery('#_cta2 .'+target).removeClass('hidden');
+  jQuery('#_cta1').slideUp();
+  jQuery('#_cta2').css({'display': 'none'}).removeClass('hidden').slideDown();
+});
+
+jQuery('#cta1 .cta__item').click(function(e) {
+  e.preventDefault();
+  jQuery(this).closest('.cta__item').addClass('active').siblings('.cta__item').removeClass('active');
+
+  var target = jQuery(this).closest('.cta__item').data('target');
+
+  jQuery('#cta2 .book-form-holder').addClass('hidden');
+  jQuery('#cta2 .'+target).removeClass('hidden');
   jQuery('#cta1').slideUp();
   jQuery('#cta2').css({'display': 'none'}).removeClass('hidden').slideDown();
 });
 
 jQuery('.cta__category').click(function(event) {
 
-  if(!jQuery('#cta1').is(':visible')){
+  if(!jQuery(this).siblings('#cta1').is(':visible')){
     jQuery('#cta1').slideDown();
     jQuery('#cta2').slideUp();
   }
+
+   if(!jQuery(this).siblings('#_cta1').is(':visible')){
+    jQuery('#_cta1').slideDown();
+    jQuery('#_cta2').slideUp();
+  }
 });
-
-// jQuery('#cta2 button').click(function(e) {
-//   e.preventDefault();
-//   jQuery('#cta2').slideUp();
-//   jQuery('#cta3').css({'display': 'none'}).removeClass('hidden').slideDown();
-// });
-
-
 
 jQuery('.tabs__header-item').click(function(e) {
   e.preventDefault();
@@ -224,6 +239,13 @@ jQuery(document).on('click', '.icon-close-destroy', function(){
       jQuery('.site-container').find('.popup-destroy').remove();
     },300);
 })
+
+jQuery('.faq-item__title').click(function(event) {
+  jQuery(this).toggleClass('active');
+  jQuery(this).siblings('.faq-item__body').slideToggle();
+  jQuery(this).closest('.faq-item').siblings('.faq-item').find('.faq-item__title').removeClass('active')
+  jQuery(this).closest('.faq-item').siblings('.faq-item').find('.faq-item__body').slideUp();
+});
 var Cookie =
 {
    set: function(name, value, days)

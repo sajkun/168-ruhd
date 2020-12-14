@@ -6,46 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<div class="mobile-trigger-popup <?php if (is_home() || theme_construct_page::is_page_type('clinics')){ echo ' dark ' ;} ?>">
-  <div class="container-md">
-    <div class="row no-gutters">
-      <div class="col valign-center">
-        <div class="cta-rate">
-
-          <?php if ($text_cta): ?>
-          <span class="cta-rate__title">
-            <?php echo $text_cta; ?>
-          </span>
-          <?php endif ?>
-          <div class="cta-rate__stars">
-
-            <?php for($i = 0; $i < $mobile_stars; $i++){?>
-               <img src="<?php echo THEME_URL?>/assets/images/star.jpg" alt="">
-            <?php
-             }
-            ?>
-
-            <?php if ($mobile_rate): ?>
-              <span class="cta-rate__text">
-                  <?php echo $mobile_rate; ?>
-              </span>
-            <?php endif ?>
-          </div>
-        </div>
-      </div>
-
-        <a href="javascript:void(0)" class="book-btn valign-center <?php if (is_home() || theme_construct_page::is_page_type('clinics')){ echo ' book-btn_light  ' ;}else{ echo ' book-btn_dark  '; } ?>" onclick="show_popup('popup-mobile-cta')">
-          <img src="<?php echo THEME_URL;?>/assets/images/svg/ruh.svg" alt="">
-          <span>Book</span>
-        </a>
-    </div>
-  </div>
-</div>
-
 <div class="popup" id="popup-mobile-cta">
   <div class="popup-inner cta">
        <div class="clearfix">
-          <div class="popup-header cta__category">
+          <div class="popup-header cta__category ">
                   <img src="<?php echo THEME_URL ?>/assets/images/svg/ruh.svg" class="cta__img" alt="">
                   <span>VISIT</span>
             <i class="icon-close">×</i>

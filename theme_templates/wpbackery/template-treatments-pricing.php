@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 <?php if ($pricing_count['London']['Consultations'] > 0): ?>
-  <div class="row">
+  <div class="row title">
     <div class="col-lg-7">
       <span class="table-title">Consultations</span>
     </div>
@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="spacer-h-30"></div>
 <?php endif ?>
 <?php if ($pricing_count['London']['Treatments'] > 0): ?>
-  <div class="row">
+  <div class="row title">
     <div class="col-lg-7">
       <span class="table-title">Treatments</span>
     </div>
@@ -87,7 +87,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="page-item" id="manchester_price" data-display="none">
   <?php if ($pricing_count['Manchester']['Consultations'] > 0): ?>
-    <div class="row">
+    <div class="row title">
       <div class="col-lg-7">
         <span class="table-title">Consultations</span>
       </div>
@@ -129,7 +129,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <?php endif ?>
 
   <?php if ($pricing_count['Manchester']['Treatments'] > 0): ?>
-    <div class="row">
+    <div class="row title">
       <div class="col-lg-7">
         <span class="table-title">Treatments</span>
       </div>

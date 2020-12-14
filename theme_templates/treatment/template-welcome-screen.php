@@ -88,6 +88,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         <li class="active"><a href="#overview">Overview</a></li>
         <li><a href="#beforeafter">Before + Afters</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <?php if ($has_faq): ?>
+        <li><a href="#f_a_q">F.A.Q.</a></li>
+        <?php endif ?>
       </ul>
 
 

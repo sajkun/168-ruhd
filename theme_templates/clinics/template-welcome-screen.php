@@ -18,7 +18,40 @@ if ( ! defined( 'ABSPATH' ) ) {
   </a>
 </div>
 <?php endif ?>
-<div class="container-xxl no-padding">
+
+<div class="container-xxl no-padding clinics-welcome-screen">
+  <?php if ($video_url_bg):
+    $video_url_bg_ = explode('/', $video_url_bg);
+    $id = $video_url_bg_[ count($video_url_bg_) - 1];
+   ?>
+    <div class="clinics-welcome-screen__overlay"></div>
+    <div class="iframe-holder">
+      <iframe id="bg-iframe" src="https://www.youtube.com/embed/<?php echo $id; ?>?autoplay=1&loop=1&rel=0&controls=0&wmode=transparent" ></iframe>
+    </div>
+
+    <script>
+      jQuery(document).ready(function(){
+        resize_iframe();
+      })
+
+      jQuery(window).resize(function(){
+        resize_iframe();
+      });
+
+      function resize_iframe(){
+        var window_width = jQuery(window).width();
+        var window_height = jQuery(window).height();
+
+        console.log((window_height/window_width).toFixed(2) );
+
+        if((window_height/window_width).toFixed(2) > 0.56){
+          jQuery('#bg-iframe').width(window_height / 0.56);
+        }else{
+          jQuery('#bg-iframe').height(window_width * 0.56);
+        }
+      }
+    </script>
+  <?php endif ?>
   <div class="carousel clinics no-bg">
     <div class="row">
       <div class="col-12 col-md-6 valign-center-md">

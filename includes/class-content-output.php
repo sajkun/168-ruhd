@@ -454,7 +454,7 @@ class theme_content_output{
 
     }
     echo "<div class='post-wrapper'>";
-    echo '<div class="container">';
+    // echo '<div class="container-fluid">';
     echo '<div class="owl-carousel ">';
 
       foreach ($posts as $key => $post) {
@@ -471,7 +471,7 @@ class theme_content_output{
         print_theme_template_part('post-preview', 'globals', $args);
       }
     echo "</div>";
-    echo "</div>";
+    // echo "</div>";
     echo "</div>";
 
   }

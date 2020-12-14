@@ -33,29 +33,26 @@ class theme_treatment_output{
     $title_pirces[]         = '<span>';
 
     $args = array(
-      'phone'   => '+44 (0)20 3904 7655',
+      'phone'     => '+44 (0)20 3904 7655',
       'title'     => implode(' ', $title_pirces),
-      'category' => implode(', ', $cat),
-      'about'    => $obj->post_excerpt,
+      'category'  => implode(', ', $cat),
+      'about'     => $obj->post_excerpt,
       'video_url' =>  get_field('video_url', $obj->ID),
+      'has_faq'   => get_field('questions_and_answers', $obj->ID),
     );
 
     $form_id    = get_option('treatment_subscription_form_inclicnic');
     $shortcode = sprintf('[wpforms id="%s"]',  $form_id);
-
     $args['form_id'] =($form_id)? md5(sprintf('[wpforms id="%s"]',  $form_id)) : false;
-
-    if(function_exists('get_field')){
-      $args['image'] = get_field('image', $obj->ID);
-      $args['image_mobile'] = get_field('image_mobile', $obj->ID);
-      $args['bg_color'] = get_field('bg_color', $obj->ID);
-      $args['adv'] =  array(
-        'text'       => get_field('adv_text', $obj->ID),
-        'adv_link'   => get_field('adv_link', $obj->ID),
-        'tag'        => get_field('adv_tag', $obj->ID),
-        'tag_color'  => get_field('tag_color', $obj->ID),
-      );
-    }
+    $args['image'] = get_field('image', $obj->ID);
+    $args['image_mobile'] = get_field('image_mobile', $obj->ID);
+    $args['bg_color'] = get_field('bg_color', $obj->ID);
+    $args['adv'] =  array(
+      'text'       => get_field('adv_text', $obj->ID),
+      'adv_link'   => get_field('adv_link', $obj->ID),
+      'tag'        => get_field('adv_tag', $obj->ID),
+      'tag_color'  => get_field('tag_color', $obj->ID),
+    );
 
 
     print_theme_template_part('welcome-screen', 'treatment', $args);
@@ -115,6 +112,13 @@ class theme_treatment_output{
             'title'   => get_field('what_is_title', $obj->ID),
             'text'    => apply_filters('the_content', get_field('what_is', $obj->ID)),
          ),
+
+         'f_a_q'    => array(
+            'title' => get_field('faq_title', $obj->ID)?: '',
+            'show'  => true,
+            'items' => get_field('questions_and_answers', $obj->ID),
+         ),
+
        ),
       );
       print_theme_template_part('content', 'treatment', $args);

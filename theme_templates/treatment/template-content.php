@@ -24,6 +24,21 @@ if ( ! defined( 'ABSPATH' ) ) {
                   </div>
                 <?php endif ?>
 
+                <?php if ($p['items']): ?>
+                  <?php foreach ($p['items'] as $faq): clog($faq);?>
+                  <div class="faq-item">
+                    <div class="faq-item__title">
+                      <span class="faq-item__title-text"><?php echo $faq['question'] ?></span>
+                      <span class="faq-item__title-trigger"></span>
+                    </div>
+                    <div class="faq-item__body">
+                      <?php echo $faq['answer'] ?>
+                    </div>
+                  </div>
+
+                  <?php endforeach ?>
+                <?php endif ?>
+
                 <?php if($p['notification_title'] || $p['notification_text']  ): ?>
                   <div class="info-block">
                     <svg class="svg-icon-okay"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-okay"></use></svg>

@@ -41,12 +41,21 @@ class WPBakeryShortCode_dentists_list extends WPBakeryShortCode {
 
       $prefix = get_field('prefix', $t->ID)?: '';;
 
+      $category_doc = wp_get_post_terms($t->ID, 'category_doc' , array('fields'=>'names'));
+
+
+      $category_doc = array_map(function($el){
+        return strtolower($el);
+       }, $category_doc );
+
+      $is_dentist = in_array('dentist', $category_doc) ||  in_array('dentists', $category_doc) || in_array('doctor', $category_doc);
+
       $temp = array(
         'name' => $prefix . trim(get_field('first_name', $t->ID) . ' ' . get_field('last_name', $t->ID)),
         'grades' => get_field('grades', $t->ID),
         'spesilization' => get_field('specialization', $t->ID),
         'photo'  => wp_get_attachment_image_url( $image_id, 'dentist_photo'),
-        'url'    => get_permalink($t),
+        'url'    => $is_dentist? get_permalink($t) : 'javascript:void(0)',
       );
 
       foreach ($category as $c) {

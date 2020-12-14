@@ -305,6 +305,27 @@ class velesh_theme_customizer{
              'choices' => $choices
          )
       );
+
+      $wp_customize->add_setting(
+          'story_clinic_subscription_form',
+          array(
+              'default'    => '',
+              'transport'  => 'postMessage',
+              'type'       => 'option',
+          )
+      );
+
+      $wp_customize->add_control(
+        'story_clinic_subscription_form',
+        array(
+          'description' => 'should have a text field with a value =  %story_source% and class "hidden"',
+          'section'   => 'theme_forms_section',
+          'label'     => __('Smile Story Book form', 'theme-translations'),
+          'type'      => 'select',
+          'settings'  => 'story_clinic_subscription_form',
+           'choices' => $choices
+         )
+      );
   }
 
   /**

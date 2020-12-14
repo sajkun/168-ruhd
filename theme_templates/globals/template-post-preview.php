@@ -7,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="post-preview" <?php echo 'style="background-image:url('.$bg_img.')"'; ?>>
 
-
   <div class="post-preview__info">
     <p class="post-preview__category"><?php echo $category ?></p>
 

@@ -4,7 +4,7 @@
  *
  * Displays all of the head element and everything up until the "site-content" div.
  */
-
+$obj = get_queried_object();
 do_action('start_page');
 ?>
 <!DOCTYPE html>
@@ -37,6 +37,16 @@ do_action('start_page');
   add_filter( 'body_class', function( $classes ) {
     return array_merge( $classes, array( 'page' ) );
   } );
+
+
+
+  if(function_exists('get_field') && $obj->post_type =="theme_clinics" && get_field('clinic_video_bg', $obj->ID)){
+
+    add_filter( 'body_class', function( $classes ) {
+      return array_merge( $classes, array( 'video-bg-page' ) );
+    } );
+  }
+
 
 ?>
 <body  <?php body_class(); ?>>

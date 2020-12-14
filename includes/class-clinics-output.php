@@ -24,6 +24,7 @@ class theme_clinics_output{
       'phone' => $phone,
       'form_id' => md5(sprintf('[wpforms id="%s"]',  $form_id)),
       'video_url' =>  get_field('clinic_video', $obj->ID),
+      'video_url_bg' =>  get_field('clinic_video_bg', $obj->ID),
     );
 
     print_theme_template_part('welcome-screen', 'clinics', $args);

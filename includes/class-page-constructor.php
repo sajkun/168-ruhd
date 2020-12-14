@@ -25,7 +25,7 @@ class theme_construct_page{
     add_action('do_theme_header', array('theme_content_output', 'print_header'));
     add_action('do_theme_footer', array('theme_content_output', 'print_footer'));
 
-    add_action('do_blog_content', array('theme_content_output', 'print_categories'));
+    // add_action('do_blog_content', array('theme_content_output', 'print_categories'));
 
     add_action('do_blog_content', array('theme_content_output', 'print_all_posts'));
 
@@ -49,6 +49,8 @@ class theme_construct_page{
       add_action('do_theme_content', array('theme_post_output', 'print_welcome_screen'));
 
       add_action('do_theme_content', array('theme_post_output', 'print_content'),20);
+
+      add_action('do_theme_after_footer', array('theme_post_output', 'print_mobile_cta_popup'));
 
     } else if(self::is_page_type('clinics')){
 
