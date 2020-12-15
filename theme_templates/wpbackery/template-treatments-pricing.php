@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     if(!isset($t['pricing']['London']) ) {continue;}
     ?>
     <div class="row line-item">
-      <div class="col-lg-6">
+      <div class="col-8 col-lg-6">
         <span class="pricing-item__title"><?php echo $t['name']; ?>
 
         </span>
@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </span>
 
       </div>
-      <div class="col-lg-6 text-right-lg">
+      <div class="col-lg-6 col-4 text-right valign-center valign-top-lg">
         <?php
         if (isset($t['pricing']['London'])) {
           $price = PHP_INT_MAX;
@@ -58,7 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       if (!isset($t['pricing']['London'])){continue;}
       ?>
       <div class="row line-item">
-        <div class="col-lg-6">
+        <div class="col-8 col-lg-6">
           <span class="pricing-item__title"><?php echo $t['name']; ?>
 
           </span>
@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </span>
 
         </div>
-        <div class="col-lg-6 text-right-lg">
+        <div class="col-lg-6 col-4 text-right valign-center valign-top-lg">
           <?php
           if (isset($t['pricing']['London'])) {
             $price = PHP_INT_MAX;
@@ -100,7 +100,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       if (!isset($t['pricing']['Manchester'])){continue;}
      ?>
       <div class="row line-item">
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-8">
           <span class="pricing-item__title"><?php echo $t['name']; ?>
 
           </span>
@@ -109,7 +109,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </span>
 
         </div>
-        <div class="col-lg-6 text-right-lg">
+        <div class="col-lg-6 col-4 text-right valign-center valign-top-lg">
           <?php
           if (isset($t['pricing']['Manchester'])) {
             $price = PHP_INT_MAX;
@@ -138,7 +138,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       if (!isset($t['pricing']['Manchester'])){continue;}
       ?>
       <div class="row line-item">
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-8">
           <span class="pricing-item__title"><?php echo $t['name']; ?>
 
           </span>
@@ -147,7 +147,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </span>
 
         </div>
-        <div class="col-lg-6 text-right-lg">
+        <div class="col-lg-6 col-4 text-right valign-center valign-top-lg">
           <?php
           if (isset($t['pricing']['Manchester'])) {
             $price = PHP_INT_MAX;
