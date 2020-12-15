@@ -90,6 +90,7 @@ class WPBakeryShortCode_pricing_item extends WPBakeryShortCode {
     echo print_theme_template_part('pricing-item', 'wpbackery', $args);
     $output = ob_get_contents();
     ob_end_clean();
+
     return $output;
   }
 }
