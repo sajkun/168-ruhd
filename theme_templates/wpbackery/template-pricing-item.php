@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="col-md-6">
-  <div class="row line-item no-gutters">
+  <div class="row line-item no-gutters full-height">
     <div class="col-8 col-lg-6">
       <span class="pricing-item__title"><?php echo $title; ?> </span>
       <span class="pricing-item__text"><?php echo $description; ?> </span>

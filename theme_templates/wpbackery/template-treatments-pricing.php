@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="page-item" id="london_price" data-display="block">
-
-
 <?php if ($pricing_count['London']['Consultations'] > 0): ?>
   <div class="row title">
     <div class="col-lg-7">
