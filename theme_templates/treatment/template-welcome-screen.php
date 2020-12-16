@@ -29,7 +29,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 </style>
 
 <div class="container-xxl no-padding">
+
+  <div class="carousel treatment no-bg">
   <?php if (wp_is_mobile()): ?>
+   <div class="spacer-h-20"></div>
   <div class="clearfix mobile-menu-wrapper__row">
     <a href="tel:<?php echo $phone?>" class="book-btn book-btn_light2">
       <svg class="icon svg-icon-phone2"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone2"></use></svg>
@@ -47,7 +50,6 @@ if ( ! defined( 'ABSPATH' ) ) {
   </div>
   <div class="spacer-h-10"></div>
   <?php endif ?>
-  <div class="carousel treatment no-bg">
     <div class="row">
       <div class="col-12 col-md-6 valign-center-md">
         <div class="spacer-h-30 spacer-h-md-40"></div>

@@ -48,7 +48,6 @@ function vc_before_init_video_btn_round(){
           "heading" => __("Link", "theme-translations"),
           "param_name" => "link",
         ),
-
       ),
   ));
 }

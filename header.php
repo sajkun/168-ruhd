@@ -47,8 +47,13 @@ do_action('start_page');
     } );
   }
 
-
+  if(strpos('story_bg', $obj->post_content) >=0){
+    add_filter( 'body_class', function( $classes ) {
+      return array_merge( $classes, array( 'video-bg-page' ) );
+    } );
+  }
 ?>
+
 <body  <?php body_class(); ?>>
 
 
