@@ -7855,6 +7855,13 @@ p.cta-text {
   z-index: 1;
 }
 
+.hero-container .owl-stage-outer,
+.hero-container .owl-stage,
+.hero-container .owl-item,
+.hero-container .post-preview {
+  min-height: 100% !important;
+}
+
 .hero-container__content {
   min-height: 420px;
   position: relative;

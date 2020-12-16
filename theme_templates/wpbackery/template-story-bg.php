@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       <div class="row">
         <div class="col-md-6  valign-center-lg">
           <div class="spacer-h-50 spacer-h-lg-100"></div>
-          <div class="spacer-h-lg-100"></div>
+          <div class="spacer-h-lg-70"></div>
           <div class="info__content text-center text-left-md">
             <div class=" site-info">
              <span class="site-info__tag new"><?php echo $tag_text; ?></span>
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <p class="info__text"><?php echo $text; ?></p>
             <?php endif ?>
             <div class="spacer-h-50 spacer-h-lg-100"></div>
-            <div class="spacer-h-lg-100"></div>
+            <div class="spacer-h-lg-70"></div>
           </div>
         </div>
 
