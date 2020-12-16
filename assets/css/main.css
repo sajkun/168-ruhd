@@ -7855,10 +7855,13 @@ p.cta-text {
   z-index: 1;
 }
 
+.hero-container .owl-carousel,
+.hero-container .post-wrapper,
 .hero-container .owl-stage-outer,
 .hero-container .owl-stage,
 .hero-container .owl-item,
 .hero-container .post-preview {
+  height: 100% !important;
   min-height: 100% !important;
 }
 
