@@ -7865,7 +7865,7 @@ p.cta-text {
 
 @media (min-width: 768px) {
   .hero-container__content {
-    height: 620px;
+    min-height: 620px;
   }
 }
 

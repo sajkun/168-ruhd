@@ -42,9 +42,9 @@ function vc_before_init_story_bg(){
           "param_name" => "title",
         ),
         array(
-          "type" => "textfield",
+          "type" => "textarea",
           "heading" => __("Text", "theme-translations"),
-          "param_name" => "textarea",
+          "param_name" => "text",
         ),
 
         array(
