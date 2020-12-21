@@ -37,7 +37,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             <p class="info__text"><?php echo $text; ?></p>
             <?php endif ?>
             <div class="spacer-h-50 spacer-h-lg-100"></div>
-            <div class="spacer-h-lg-70"></div>
           </div>
         </div>
 
