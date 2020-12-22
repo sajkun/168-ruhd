@@ -6520,6 +6520,16 @@ body {
   background: #1a1c1a;
 }
 
+.video-bg-page .logo img.regular {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.video-bg-page .logo img.contrast {
+  visibility: visible;
+  opacity: 1;
+}
+
 @media (min-width: 980px) {
   .video-bg-page header.contrast-header,
   .video-bg-page header.contrast {
@@ -6977,7 +6987,8 @@ body {
 }
 
 .site-navigation {
-  padding-bottom: 50px;
+  padding: 0 15px;
+  padding-bottom: 100px;
   background-color: #1a1c1a;
   position: absolute;
   top: 100%;
@@ -6990,18 +7001,25 @@ body {
   max-height: 90vh;
 }
 
+@media (min-width: 768px) {
+  .site-navigation {
+    padding-bottom: 50px;
+  }
+}
+
 .active .site-navigation {
   visibility: visible;
   opacity: 1;
 }
 
 .treatments-menu {
-  padding: 0 15px;
+  padding: 0 15px 50зч;
   flex-basis: 50%;
 }
 
 @media (min-width: 768px) {
   .treatments-menu {
+    padding: 0 15px;
     flex-basis: 20%;
     padding-top: 50px;
     position: relative;

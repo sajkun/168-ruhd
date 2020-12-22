@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php endif ?>
 
 <div class="container-xxl no-padding clinics-welcome-screen">
-  <?php if ($video_url_bg):
+  <?php if ($video_url_bg && !wp_is_mobile()):
     $video_url_bg_ = explode('/', $video_url_bg);
     $id = $video_url_bg_[ count($video_url_bg_) - 1];
    ?>
