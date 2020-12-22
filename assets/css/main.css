@@ -6516,7 +6516,9 @@ body {
   }
 }
 
-.contrast {
+nav.contrast,
+header.contrast,
+div.contrast {
   background: #1a1c1a;
 }
 
