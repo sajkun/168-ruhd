@@ -9741,6 +9741,12 @@ ul {
   padding: 0 0 100px;
 }
 
+@media (min-width: 768px) {
+  .treatment__info-text {
+    padding: 0;
+  }
+}
+
 .rules__text {
   line-height: 38px;
   display: inline-block;
