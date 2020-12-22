@@ -21,14 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             <p class="cta__text">Visit us online or pop into one of our clinics.</p>
 
-            <div class="cta__item active" data-target="form-online-2">
-              <svg class="svg-icon-phone"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone"></use></svg>
-
-              <h4 class="cta__item-title">Online Visit</h4>
-              <p class="cta__item-text">Tell our dentists about your teeth and get a free treatment plan.</p>
-            </div>
-
-            <div class="cta__item" data-target="form-inclinic-2">
+            <div class="cta__item active" data-target="form-inclinic-2">
               <svg class="svg-icon-house"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-house"></use></svg>
 
               <h4 class="cta__item-title">In Clinic Visit</h4>
@@ -36,6 +29,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
               <b class="cta__item-info">Same-day appointments available</b>
             </div>
+
+            <div class="cta__item not-active" data-target="form-online-2">
+              <svg class="svg-icon-phone"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone"></use></svg>
+
+              <h4 class="cta__item-title">Online Visit (Comming Soon)</h4>
+              <p class="cta__item-text">Tell our dentists about your teeth and get a free treatment plan.</p>
+            </div>
+
           </div><!-- cta__section -->
 
           <div class="cta__section hidden" id="_cta2">

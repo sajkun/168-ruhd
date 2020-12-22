@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    ?>
     <div class="clinics-welcome-screen__overlay"></div>
     <div class="iframe-holder">
-      <iframe id="bg-iframe" src="https://www.youtube.com/embed/<?php echo $id; ?>?autoplay=1&loop=1&rel=0&controls=0&wmode=transparent" ></iframe>
+      <iframe allow="autoplay" allowautoplay frameborder="0" allowfullscreen id="bg-iframe" src="https://www.youtube.com/embed/<?php echo trim($id); ?>?enablejsapi=1&autoplay=1&loop=1&rel=0&controls=0&wmode=transparent&mute=1" ></iframe>
     </div>
 
     <script>
@@ -41,8 +41,6 @@ if ( ! defined( 'ABSPATH' ) ) {
       function resize_iframe(){
         var window_width = jQuery(window).width();
         var window_height = jQuery(window).height();
-
-        console.log((window_height/window_width).toFixed(2) );
 
         if((window_height/window_width).toFixed(2) > 0.56){
           jQuery('#bg-iframe').width(window_height / 0.56);
@@ -78,6 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <img src="<?php echo $image; ?>" class="img mobile-friendly" alt="">
       </div>
     </div>
+    <div class="spacer-h-50"></div>
 
     <div class="col-12 menu-holder">
       <ul>

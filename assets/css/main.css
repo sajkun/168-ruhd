@@ -6533,6 +6533,13 @@ body {
   }
 }
 
+@media (min-width: 980px) {
+  .video-bg-page header.contrast-header.active,
+  .video-bg-page header.contrast.active {
+    background-color: #1a1c1a;
+  }
+}
+
 .video-bg-page .clinics-welcome-screen {
   position: relative;
 }
@@ -7888,6 +7895,10 @@ p.cta-text {
 .hero-container .overlay {
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
+}
+
+.no-paddings {
+  padding: 0 !important;
 }
 
 .mobile-menu-toggle {
@@ -9696,7 +9707,7 @@ ul {
   font-weight: 500;
   line-height: 30px;
   display: block;
-  margin: 0;
+  padding: 0 0 100px;
 }
 
 .rules__text {

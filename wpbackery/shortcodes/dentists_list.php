@@ -71,6 +71,7 @@ class WPBakeryShortCode_dentists_list extends WPBakeryShortCode {
     $args = array(
       'team' => $formatted,
     );
+    clog($args);
     ob_start();
 
     echo print_theme_template_part('dentists-list', 'wpbackery', $args);

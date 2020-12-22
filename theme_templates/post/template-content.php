@@ -81,20 +81,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
               <p class="cta__text">Visit us online or pop into one of our clinics.</p>
 
-              <div class="cta__item active" data-target="form-online">
-                <svg class="svg-icon-phone"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone"></use></svg>
-
-                <h4 class="cta__item-title">Online Visit</h4>
-                <p class="cta__item-text">Tell our dentists about your teeth and get a free treatment plan.</p>
-              </div>
-
-              <div class="cta__item" data-target="form-inclinic">
+              <div class="cta__item active" data-target="form-inclinic">
                 <svg class="svg-icon-house"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-house"></use></svg>
 
                 <h4 class="cta__item-title">In Clinic Visit</h4>
                 <p class="cta__item-text">Book a free appointment at either of our London or Manchester clinics.</p>
 
                 <b class="cta__item-info">Same-day appointments available</b>
+              </div>
+
+              <div class="cta__item not-active" data-target="form-online">
+                <svg class="svg-icon-phone"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone"></use></svg>
+
+                <h4 class="cta__item-title">Online Visit (Comming Soon)</h4>
+                <p class="cta__item-text">Tell our dentists about your teeth and get a free treatment plan.</p>
               </div>
             </div><!-- cta__section -->
 

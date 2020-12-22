@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container no-paddings">
   <div class="row padding-8 no-gutters-mob treatments-target">
     <div class="col-md-6">
       <a href="<?php echo get_permalink($items[0]) ?>" class="treatment-preview treatment-preview_lg">

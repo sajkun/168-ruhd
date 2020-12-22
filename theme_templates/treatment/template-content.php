@@ -99,7 +99,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <?php foreach ($data as $key => $item): ?>
                         <div class="pricing-item">
                           <div class="row">
-                            <div class="col-sm-7 col-lg-8">
+                            <div class="col-7 col-sm-7 col-lg-8">
                               <?php if ($item['title']): ?>
                               <h4 class="pricing-item__title"><?php echo $item['title'] ?></h4>
                               <?php endif ?>
@@ -108,7 +108,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                               <?php endif ?>
                             </div>
                               <?php if ($item['starting_price']): ?>
-                            <div class="col-sm-5 col-lg-4 text-right-sm valign-center">
+                            <div class="col-5 col-sm-5 col-lg-4 text-right valign-center">
                               <span class="pricing-item__label">from £</span>
                               <span class="pricing-item__val"><?php echo $item['starting_price'] ?></span>
                             </div>
@@ -144,14 +144,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                   <p class="cta__text">Visit us online or pop into one of our clinics.</p>
 
-                  <div class="cta__item active" data-target="form-online">
-                    <svg class="svg-icon-phone"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone"></use></svg>
-
-                    <h4 class="cta__item-title">Online Visit</h4>
-                    <p class="cta__item-text">Tell our dentists about your teeth and get a free treatment plan.</p>
-                  </div>
-
-                  <div class="cta__item" data-target="form-inclinic">
+                  <div class="cta__item active" data-target="form-inclinic">
                     <svg class="svg-icon-house"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-house"></use></svg>
 
                     <h4 class="cta__item-title">In Clinic Visit</h4>
@@ -159,6 +152,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                     <b class="cta__item-info">Same-day appointments available</b>
                   </div>
+
+                   <div class="cta__item not-active" data-target="form-online">
+                    <svg class="svg-icon-phone"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone"></use></svg>
+
+                    <h4 class="cta__item-title">Online Visit (Coming Soon)</h4>
+                    <p class="cta__item-text">Tell our dentists about your teeth and get a free treatment plan.</p>
+                   </div>
+
                 </div><!-- cta__section -->
 
                 <div class="cta__section hidden" id="cta2">
