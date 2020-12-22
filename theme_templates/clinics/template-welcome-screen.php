@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="carousel clinics no-bg">
     <div class="row">
       <div class="col-12 col-md-6 valign-center-md">
-        <div class="spacer-h-30 spacer-h-md-40"></div>
+        <div class="spacer-h-30 spacer-h-md-120"></div>
         <div class="info__content">
           <?php if ($category): ?>
             <p class="info__category"><?php echo $category ?></p>
