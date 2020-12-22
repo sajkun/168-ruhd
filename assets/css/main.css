@@ -6596,8 +6596,8 @@ body {
 
 @media (max-width: 768px) {
   .video-bg-page .clinics-welcome-screen {
-    height: 100vh;
-    min-height: 486px;
+    height: calc( 100vh - 212px);
+    min-height: 400px;
   }
 }
 
@@ -6606,6 +6606,10 @@ body {
     height: 100vh;
     min-height: 486px;
   }
+}
+
+.video-bg-page .clinics-welcome-screen .carousel.clinics {
+  height: 100%;
 }
 
 @media (min-width: 980px) {
