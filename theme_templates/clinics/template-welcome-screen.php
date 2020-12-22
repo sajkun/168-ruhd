@@ -76,7 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <img src="<?php echo $image; ?>" class="img mobile-friendly" alt="">
       </div>
     </div>
-    <div class="spacer-h-50"></div>
+    <div class="spacer-h-50 spacer-h-md-0"></div>
 
     <div class="col-12 menu-holder">
       <ul>

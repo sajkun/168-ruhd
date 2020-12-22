@@ -6594,6 +6594,13 @@ body {
   margin: auto;
 }
 
+@media (max-width: 768px) {
+  .video-bg-page .clinics-welcome-screen {
+    height: 100vh;
+    min-height: 486px;
+  }
+}
+
 @media (min-width: 980px) {
   .video-bg-page .clinics-welcome-screen {
     height: 100vh;
@@ -6602,7 +6609,7 @@ body {
 }
 
 @media (min-width: 980px) {
-  .video-bg-page .clinics-welcome-screen .carousel.clinics {
+  .video-bg-page .clinics-welcome-screen .iframe-holder ~ .carousel.clinics {
     z-index: 100;
     background: transparent;
   }
