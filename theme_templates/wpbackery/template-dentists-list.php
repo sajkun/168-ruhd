@@ -7,8 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php
 $display = 'block';
-foreach ($team as $key => $list): ?>
-
+$dentists_category = array('dentists');
+foreach ($team as $key => $list):
+  $display = in_array($key, $dentists_category)? 'block' : 'none';
+  ?>
 <div class="page-item" id="<?php echo $key ?>" data-display="<?php echo $display; ?>">
   <div class="row no-gutters">
     <?php foreach ($list as $sp): if(!$sp['photo'] ) continue;?>
@@ -26,5 +28,5 @@ foreach ($team as $key => $list): ?>
   </div>
 </div>
 <?php
-$display = 'none';
+// $display = 'none';
 endforeach; ?>
