@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    ?>
     <div class="clinics-welcome-screen__overlay"></div>
     <div class="iframe-holder">
-      <iframe allow="autoplay" allowautoplay frameborder="0" allowfullscreen id="bg-iframe" src="https://www.youtube.com/embed/<?php echo trim($id); ?>?enablejsapi=1&autoplay=1&loop=1&rel=0&controls=0&wmode=transparent&mute=1" ></iframe>
+      <iframe allow="autoplay" allowautoplay frameborder="0" allowfullscreen id="bg-iframe" src="https://www.youtube.com/embed/<?php echo trim($id); ?>?enablejsapi=1&autoplay=1&loop=1&rel=0&controls=0&wmode=transparent&mute=1&playlist=<?php echo trim($id); ?>" ></iframe>
     </div>
 
     <script>

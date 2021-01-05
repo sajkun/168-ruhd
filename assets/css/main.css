@@ -6598,7 +6598,6 @@ div.contrast {
 
 @media (max-width: 768px) {
   .video-bg-page .clinics-welcome-screen {
-    height: calc( 100vh - 212px);
     min-height: 400px;
   }
 }
