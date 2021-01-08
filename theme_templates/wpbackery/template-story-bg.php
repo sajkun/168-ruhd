@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php if ($video_url): ?>
         <div class="col-md-6 valign-center-lg">
           <div class="spacer-h-20"></div>
-          <img src="http://localhost/ruhd/wp-content/themes/velesh_theme/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+          <img src="<?php echo THEME_URL; ?>/ruhd/wp-content/themes/velesh_theme/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>', event)" alt="">
           <div class="spacer-h-20"></div>
         </div>
         <?php endif ?>

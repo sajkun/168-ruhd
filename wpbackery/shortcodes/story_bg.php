@@ -89,7 +89,7 @@ class WPBakeryShortCode_story_bg extends WPBakeryShortCode {
       );
     }, $posts);
 
-    $default_subscription_form = get_option('default_subscription_form');
+    $default_subscription_form = get_option('default_subscription_form_inclinic');
 
     $form_id  =  md5(sprintf('[wpforms id="%s"]',  $default_subscription_form));
 

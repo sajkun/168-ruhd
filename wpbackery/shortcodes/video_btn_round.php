@@ -18,7 +18,7 @@ class WPBakeryShortCode_video_btn_round extends WPBakeryShortCode {
 
     ob_start();
 
-    printf('<img src="%3$s/assets/images/play-button.png" class=" trigger-video %2$s" onclick="play_video(\'%1$s\')" alt="">', $link_data['url'], $class, THEME_URL);
+    printf('<img src="%3$s/assets/images/play-button.png" class=" trigger-video %2$s" onclick="play_video(\'%1$s\', event)" alt="">', $link_data['url'], $class, THEME_URL);
 
     $output = ob_get_contents();
     ob_end_clean();
