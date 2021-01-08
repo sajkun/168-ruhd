@@ -72,7 +72,9 @@ function update_popular_treatment(param){
   jQuery('.treatments-target').html(output);
 }
 
-function play_video(url){
+function play_video(url, event){
+
+  event.preventDefault();
   if(!url) return;
 
   if(url.indexOf('youtu') >= 0){

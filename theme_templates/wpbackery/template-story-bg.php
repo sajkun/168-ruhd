@@ -15,16 +15,16 @@ if ( ! defined( 'ABSPATH' ) ) {
   </div>
   <div class="overlay"></div>
 
-  <div class="hero-container__content clinics">
+  <div class="hero-container__content clinics full-height-vh">
     <div class="container-lg">
       <div class="row">
-        <div class="col-md-6  valign-center-lg">
+        <div class="  valign-center-lg <?php if (!$video_url): ?> offset-md-2 col-md-8 <?php else: ?> col-md-6 <?php endif ?>">
           <div class="spacer-h-50 spacer-h-lg-100"></div>
           <div class="spacer-h-lg-70"></div>
           <div class="info__content text-center text-left-md">
-            <div class=" site-info">
+            <div class="site-info" onclick="show_popup('<?php echo $form_id; ?>')">
              <span class="site-info__tag new"><?php echo $tag_text; ?></span>
-                <a title="Manchester" href="" class="site-info__text light"><?php echo $advertisement; ?></a>
+                <a href="javascript:void(0)" class="site-info__text light"><?php echo $advertisement; ?></a>
             </div>
             <div class="spacer-h-30 spacer-h-md-40"></div>
             <?php if ($before_title): ?>

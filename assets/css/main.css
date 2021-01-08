@@ -7931,6 +7931,20 @@ p.cta-text {
   padding: 0 !important;
 }
 
+@media (min-width: 768px) {
+  .full-height-vh {
+    height: 100vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .full-height-vh .container:only-child,
+  .full-height-vh .container-md:only-child,
+  .full-height-vh .container-lg:only-child {
+    height: 100%;
+  }
+}
+
 .mobile-menu-toggle {
   display: -moz-flex;
   display: -ms-flex;

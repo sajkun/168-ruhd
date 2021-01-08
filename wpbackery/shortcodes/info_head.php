@@ -19,12 +19,16 @@ class WPBakeryShortCode_info_head extends WPBakeryShortCode {
     $link_data['href'] =  $link_data['url'];
 
     unset( $link_data['url'] );
+    $default_subscription_form = get_option('default_subscription_form');
+
+    $form_id  =  md5(sprintf('[wpforms id="%s"]',  $default_subscription_form));
 
     $args = array(
       'text'       => $text,
       'link_data'  => $link_data,
       'label'      => $label,
       'background' => $background,
+      'form_id'    => $form_id,
     );
 
     ob_start();

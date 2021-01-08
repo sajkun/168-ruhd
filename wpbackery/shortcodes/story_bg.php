@@ -89,6 +89,10 @@ class WPBakeryShortCode_story_bg extends WPBakeryShortCode {
       );
     }, $posts);
 
+    $default_subscription_form = get_option('default_subscription_form');
+
+    $form_id  =  md5(sprintf('[wpforms id="%s"]',  $default_subscription_form));
+
     $args = array(
       'stories'       => $posts_formatted,
       'tag_text'      => $tag_text,
@@ -97,6 +101,7 @@ class WPBakeryShortCode_story_bg extends WPBakeryShortCode {
       'before_title'  => $before_title,
       'title'         => $title,
       'text'          => $text,
+      'form_id'          => $form_id,
       'video_url'     => $link_data['url'],
     );
 
