@@ -173,13 +173,32 @@ class theme_content_output{
       }
     }
 
-
     $copyrights      = get_option('theme_footer_copyrights');
     $footer_partners = get_option('theme_footer_partners');
     $date       = new DateTime();
     $year       = $date->format('Y');
     $plugins_active = get_option('active_plugins');
-    $default_form_id = get_option('default_subscription_form_inclinic');
+
+    $obj = get_queried_object();
+
+    clog( $obj );
+
+    switch ($obj->post_type) {
+      case 'theme_treatment':
+        $default_form_id = get_option('treatment_subscription_form_inclicnic');
+        break;
+      case "theme_clinics":
+        $default_form_id = get_option('clinic_subscription_form');
+        break;
+
+      case "theme_doctor":
+        $default_form_id = get_option('dentist_subscription_form_inclinic');
+        break;
+
+      default:
+        $default_form_id = get_option('default_subscription_form_inclinic');
+        break;
+    }
 
     $args = array(
       'copyrights'  => str_replace('{year}', $year, $copyrights),

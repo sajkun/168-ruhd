@@ -7787,6 +7787,8 @@ p.cta-text {
 }
 
 .trigger-video {
+  left: -200px;
+  right: -200px;
   cursor: pointer;
   transition: all .2s;
 }
@@ -7797,6 +7799,13 @@ p.cta-text {
 
 .trigger-video:active {
   transform: scale(1, 1);
+}
+
+@media (max-width: 767px) {
+  .treatment .trigger-video {
+    position: relative !important;
+    margin: 0 auto !important;
+  }
 }
 
 .working-hours {

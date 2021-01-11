@@ -26,6 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
       background-size: cover;
     }
   }
+
+  <?php if ($video_url): ?>
+    @media(max-width: 768px){
+      .treatment__info-text{
+        padding-bottom: 0 !important;
+      }
+    }
+  <?php endif ?>
 </style>
 
 <div class="container-xxl no-padding">
@@ -52,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <?php endif ?>
     <div class="row">
       <div class="col-12 col-md-6 valign-center-md">
-        <div class="spacer-h-30 spacer-h-md-40"></div>
+        <div class="spacer-h-20 spacer-h-md-40"></div>
         <div class="info__content">
           <?php if ($adv['text']): ?>
           <div class="text-left site-info">
@@ -61,7 +69,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           <?php endif ?>
             <a title="Manchester" href="<?php echo esc_url($adv_link) ?>" class="site-info__text"><?php echo $adv['text'] ?></a>
           </div>
-          <div class="spacer-h-30 spacer-h-lg-50"></div>
+          <div class="spacer-h-20 spacer-h-lg-50"></div>
           <?php endif ?>
 
           <?php if ($category): ?>
@@ -75,15 +83,21 @@ if ( ! defined( 'ABSPATH' ) ) {
           <?php endif ?>
           <div class="spacer-h-lg-50"></div>
         </div>
-
-         <div class="spacer-h-150 spacer-h-md-100"></div>
+         <?php if ($video_url): ?>
+           <div class="spacer-h-150 spacer-h-md-100"></div>
+         <?php else: ?>
+           <div class="spacer-h-20 spacer-h-md-100"></div>
+         <?php endif ?>
       </div>
       <div class="col-md-6 img">
         <?php if ($video_url): ?>
-        <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+          <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+          <div class="spacer-h-100 spacer-h-md-0"></div>
         <?php endif ?>
 
+        <?php if ($image1): ?>
         <img src="<?php echo $image1; ?>" class="img  show-mobile" alt="">
+        <?php endif ?>
       </div>
     </div>
 

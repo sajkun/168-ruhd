@@ -80,7 +80,7 @@ class theme_dentist_output{
     ));
 
     $treatments     = get_field('dentists_treatments', $obj->ID)?: $treatments;
-    $dentist_clinic = get_field('dentist_clinic', $obj->ID);
+
 
     $options = '';
 
@@ -89,11 +89,18 @@ class theme_dentist_output{
       $options .= sprintf('<option value="%1$s" %2$s >%1$s</option>', $t->post_title, $selected );
     }
 
+    $dentist_clinic = get_field('dentist_clinic', $obj->ID);
+    $clinics = '';
+
+    foreach ($dentist_clinic as $t) {
+      $clinics .= sprintf('<option value="%1$s" >%1$s</option>', $t->post_title );
+    }
+
     $output          = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
     $output          = str_replace('%dentist_name%',  $first_name.' '.$last_name, $output );
     $output          = str_replace('%dentist_first_name%', $first_name, $output );
-    $output          = str_replace('value="%theme_clinics%"', sprintf(' selected="selected" value="%s"',  $dentist_clinic->post_title), $output );
-    $output    = str_replace('%theme_clinics%', $dentist_clinic->post_title, $output );
+
+    $output          = str_replace('<option value="%theme_clinics%" >%theme_clinics%</option>', $clinics, $output );
 
     $form_online = ($form_id)?   $output : false;
     $form_id   = get_option('dentist_subscription_form_inclinic');
@@ -102,8 +109,11 @@ class theme_dentist_output{
     $form      = do_shortcode($shortcode);
     $output    = str_replace('%dentist_name%',  $first_name.' '.$last_name, $form );
     $output    = str_replace('%dentist_first_name%', $first_name, $output );
-    $output          = str_replace('value="%theme_clinics%"', sprintf(' selected="selected" value="%s"',  $dentist_clinic->post_title), $output );
-    $output    = str_replace('%theme_clinics%', $dentist_clinic->post_title, $output );
+
+
+    $output          = str_replace('<option value="%theme_clinics%" >%theme_clinics%</option>', $clinics, $output );
+
+
     $form_inclicnic    = ($form_id)?    $output : false;
 
     $smile_stories = get_field('smile_stories', $obj->ID);
@@ -156,7 +166,13 @@ class theme_dentist_output{
     $first_name =  get_field('first_name', $obj->ID);
     $last_name  =  get_field('last_name', $obj->ID);
     $form_id    =  get_option('dentist_subscription_form_inclinic');
+
     $dentist_clinic = get_field('dentist_clinic', $obj->ID);
+    $clinics = '';
+
+    foreach ($dentist_clinic as $t) {
+      $clinics .= sprintf('<option value="%1$s" >%1$s</option>', $t->post_title );
+    }
 
     if(!$form_id ) {return;}
 
@@ -168,8 +184,7 @@ class theme_dentist_output{
 
     $output = str_replace('%dentist_first_name%', $first_name, $output );
 
-    $output          = str_replace('value="%theme_clinics%"', sprintf(' selected="selected" value="%s"',  $dentist_clinic->post_title), $output );
-    $output    = str_replace('%theme_clinics%', $dentist_clinic->post_title, $output );
+    $output          = str_replace('<option value="%theme_clinics%" >%theme_clinics%</option>', $clinics, $output );
 
     $args = array(
       'output' =>   $output ,
@@ -180,4 +195,64 @@ class theme_dentist_output{
 
     print_theme_template_part('register-popup', 'globals', $args);
   }
+
+  public static function print_mobile_cta(){
+    if(!function_exists('get_field')) return;
+
+    $form_id = get_option('dentist_subscription_form_online');
+    $shortcode = sprintf('[wpforms id="%s"]',  $form_id);
+    $form    = do_shortcode($shortcode);
+    $first_name =  get_field('first_name', $obj->ID);
+
+    $treatments     = get_field('dentists_treatments', $obj->ID)?: $treatments;
+
+    $options = '';
+
+    foreach ($treatments as $t) {
+      $selected = ($t->post_title === $obj->post_title)? 'selected="selected"' : '';
+      $options .= sprintf('<option value="%1$s" %2$s >%1$s</option>', $t->post_title, $selected );
+    }
+
+
+    $dentist_clinic = get_field('dentist_clinic', $obj->ID);
+    $clinics = '';
+
+    foreach ($dentist_clinic as $t) {
+      $clinics .= sprintf('<option value="%1$s" >%1$s</option>', $t->post_title );
+    }
+
+    $form = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
+
+    $form          = str_replace('<option value="%theme_clinics%" >%theme_clinics%</option>', $clinics, $form );
+
+
+    $form_online = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
+
+    $form_id = get_option('dentist_subscription_form_inclinic');
+    $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
+    $form    = do_shortcode($shortcode);
+    $form = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
+
+    $form          = str_replace('<option value="%theme_clinics%" >%theme_clinics%</option>', $clinics, $form );
+
+    $form_inclicnic = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
+
+    $args = array(
+      'form_online'    => $form_online,
+      'first_name'     => $first_name,
+      'form_inclicnic' => $form_inclicnic,
+      'text_cta'      => get_field('cta_title', $obj->ID)?:get_option('mobile_text_cta'),
+
+      'mobile_stars'      => get_field('feed_stars', $obj->ID)?:get_option('mobile_stars'),
+
+      'mobile_rate'      => get_field('feed_rate_desc', $obj->ID)?:get_option('mobile_rate'),
+
+      'price'         => get_field('cta_price', $obj->ID)?:get_option('mobile_price_value'),
+
+      'per_month'     => get_field('per_month', $obj->ID),
+    );
+
+    print_theme_template_part('mobile-cta', 'dentist', $args);
+  }
+
 }
