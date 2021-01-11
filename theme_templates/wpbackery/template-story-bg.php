@@ -42,9 +42,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <?php if ($video_url): ?>
         <div class="col-md-6 valign-center-lg">
-          <div class="spacer-h-40  spacer-h-md-20"></div>
+          <div class="spacer-h-0  spacer-h-md-20"></div>
           <img src="<?php echo THEME_URL; ?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>', event)" alt="">
-          <div class="spacer-h-100 spacer-h-md-20"></div>
+          <div class="spacer-h-150 spacer-h-md-20"></div>
         </div>
         <?php endif ?>
       </div>
