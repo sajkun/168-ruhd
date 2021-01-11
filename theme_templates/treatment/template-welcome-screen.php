@@ -84,9 +84,9 @@ if ( ! defined( 'ABSPATH' ) ) {
           <div class="spacer-h-lg-50"></div>
         </div>
          <?php if ($video_url): ?>
-           <div class="spacer-h-150 spacer-h-md-100"></div>
-         <?php else: ?>
            <div class="spacer-h-20 spacer-h-md-100"></div>
+         <?php else: ?>
+           <div class="spacer-h-150 spacer-h-md-100"></div>
          <?php endif ?>
       </div>
       <div class="col-md-6 img">

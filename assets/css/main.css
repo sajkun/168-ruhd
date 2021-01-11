@@ -7805,6 +7805,10 @@ p.cta-text {
   .treatment .trigger-video {
     position: relative !important;
     margin: 0 auto !important;
+    float: unset;
+    display: block;
+    left: unset;
+    right: unset;
   }
 }
 
