@@ -225,6 +225,8 @@ class theme_dentist_output{
 
     $form          = str_replace('<option value="%theme_clinics%" >%theme_clinics%</option>', $clinics, $form );
 
+    $form          = str_replace('%dentist_first_name%', $first_name, $form );
+
 
     $form_online = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
 
@@ -232,6 +234,7 @@ class theme_dentist_output{
     $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
     $form    = do_shortcode($shortcode);
     $form = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
+    $form          = str_replace('%dentist_first_name%', $first_name, $form );
 
     $form          = str_replace('<option value="%theme_clinics%" >%theme_clinics%</option>', $clinics, $form );
 

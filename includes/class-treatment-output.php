@@ -126,11 +126,35 @@ class theme_treatment_output{
   }
 
   public static function print_mobile_cta(){
+    if(!function_exists('get_field')) return;
 
+    $obj = get_queried_object();
 
-    print_theme_template_part('mobile-cta', 'treatment', $args);
+    $form_id = get_option('treatment_subscription_form_online');
+
+    $shortcode = sprintf('[wpforms id="%s"]',  $form_id);
+    $form    = do_shortcode($shortcode);
+    $form_online = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
+
+    $form_id = get_option('treatment_subscription_form_inclicnic');
+    $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
+    $form_inclicnic    = ($form_id)? do_shortcode($shortcode): false;
+
+    $args = array(
+      'form_online'    => $form_online,
+      'form_inclicnic' => $form_inclicnic,
+      'text_cta'      => get_field('cta_title', $obj->ID)?:get_option('mobile_text_cta'),
+
+      'mobile_stars'      => get_field('feed_stars', $obj->ID)?:get_option('mobile_stars'),
+
+      'mobile_rate'      => get_field('feed_rate_desc', $obj->ID)?:get_option('mobile_rate'),
+
+      'price'         => get_field('cta_price', $obj->ID)?:get_option('mobile_price_value'),
+      'per_month'     => get_field('per_month', $obj->ID),
+    );
+
+    print_theme_template_part('mobile-cta', 'globals', $args);
   }
-
 
   public static function print_inclinic_form(){
     if(!function_exists('get_field')){return;}

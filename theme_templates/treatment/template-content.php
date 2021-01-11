@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php endif ?>
 
                 <?php if ($p['items']): ?>
-                  <?php foreach ($p['items'] as $faq): clog($faq);?>
+                  <?php foreach ($p['items'] as $faq):?>
                   <div class="faq-item">
                     <div class="faq-item__title">
                       <span class="faq-item__title-text"><?php echo $faq['question'] ?></span>
