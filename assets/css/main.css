@@ -7804,7 +7804,7 @@ p.cta-text {
 @media (max-width: 767px) {
   .treatment .trigger-video {
     position: relative !important;
-    margin: 0 auto !important;
+    margin: -50px auto !important 0;
     float: unset;
     display: block;
     left: unset;
