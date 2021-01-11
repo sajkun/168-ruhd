@@ -7946,6 +7946,7 @@ p.cta-text {
 }
 
 @media (max-width: 767px) {
+  .intercom-lightweight-app-launcher-icon-open,
   .intercom-launcher-frame {
     visibility: hidden;
     opacity: 0;
@@ -7953,7 +7954,8 @@ p.cta-text {
 }
 
 @media (max-width: 767px) {
-  .intercom-messenger-frame + .intercom-launcher-frame {
+  .intercom-messenger-frame + .intercom-lightweight-app-launcher-icon-open, .intercom-messenger-frame +
+  .intercom-launcher-frame {
     visibility: visible;
     opacity: 1;
   }
