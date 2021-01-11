@@ -71,6 +71,9 @@ class theme_construct_page{
 
       if(self::is_page_type('blog-post')){
         add_action('do_theme_after_footer', array('theme_post_output', 'print_mobile_cta'));
+
+      } else if(self::is_page_type('clinics')){
+        add_action('do_theme_after_footer', array('theme_clinics_output', 'print_mobile_cta'));
       } else{
         add_action('do_theme_after_footer', array('theme_content_output', 'print_mobile_cta'));
       }

@@ -47,6 +47,8 @@ class theme_dentist_output{
     );
 
     $form_id    = get_option('dentist_subscription_form_inclinic');
+
+
     $shortcode  = sprintf('[wpforms id="%s"]',  $form_id);
 
     $args['form_id'] =($form_id)? md5(sprintf('[wpforms id="%s"]',  $form_id)) : false;
@@ -79,6 +81,7 @@ class theme_dentist_output{
 
     $treatments     = get_field('dentists_treatments', $obj->ID)?: $treatments;
     $dentist_clinic = get_field('dentist_clinic', $obj->ID);
+
     $options = '';
 
     foreach ($treatments as $t) {
@@ -119,9 +122,13 @@ class theme_dentist_output{
       }
     }
 
+    $first_name =  get_field('first_name', $obj->ID);
+    $last_name  =  get_field('last_name', $obj->ID);
+
      $args = array(
        'form_online'    => $form_online,
        'form_inclicnic' => $form_inclicnic,
+       'first_name'     => $first_name,
        'pages' => array(
          'smile' => array(
             "show"    => true,
@@ -149,6 +156,7 @@ class theme_dentist_output{
     $first_name =  get_field('first_name', $obj->ID);
     $last_name  =  get_field('last_name', $obj->ID);
     $form_id    =  get_option('dentist_subscription_form_inclinic');
+    $dentist_clinic = get_field('dentist_clinic', $obj->ID);
 
     if(!$form_id ) {return;}
 
@@ -159,6 +167,9 @@ class theme_dentist_output{
     $output = str_replace('%dentist_name%',  $first_name.' '.$last_name, $form );
 
     $output = str_replace('%dentist_first_name%', $first_name, $output );
+
+    $output          = str_replace('value="%theme_clinics%"', sprintf(' selected="selected" value="%s"',  $dentist_clinic->post_title), $output );
+    $output    = str_replace('%theme_clinics%', $dentist_clinic->post_title, $output );
 
     $args = array(
       'output' =>   $output ,

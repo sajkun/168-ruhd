@@ -143,7 +143,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                     <?php if ( $form_inclicnic): ?>
                     <div class="form-inclinic book-form-holder">
-                      <p class="cta__title">In <span class="marked">Clinic</span> Visit</p>
+                      <p class="cta__title">Book with <span class="marked"><?php echo $first_name; ?></span></p>
                       <p class="cta__text">Let’s get you booked in for a free consultation</p>
                       <?php echo $form_inclicnic ?>
                     </div>

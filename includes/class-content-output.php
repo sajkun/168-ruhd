@@ -62,7 +62,7 @@ class theme_content_output{
 
     $plugins_active = get_option('active_plugins');
 
-    $default_form_id = get_option('default_subscription_form');
+    $default_form_id = get_option('default_subscription_form_inclinic');
 
     $args = array(
       'show_intercom'=> in_array('intercom/bootstrap.php', $plugins_active ) && !get_field('replace_chat',$obj_id),
@@ -179,7 +179,7 @@ class theme_content_output{
     $date       = new DateTime();
     $year       = $date->format('Y');
     $plugins_active = get_option('active_plugins');
-    $default_form_id = get_option('default_subscription_form');
+    $default_form_id = get_option('default_subscription_form_inclinic');
 
     $args = array(
       'copyrights'  => str_replace('{year}', $year, $copyrights),

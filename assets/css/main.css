@@ -7945,6 +7945,20 @@ p.cta-text {
   }
 }
 
+@media (max-width: 767px) {
+  .intercom-launcher-frame {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .intercom-messenger-frame + .intercom-launcher-frame {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 .mobile-menu-toggle {
   display: -moz-flex;
   display: -ms-flex;

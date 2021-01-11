@@ -70,11 +70,77 @@ class theme_clinics_output{
     $args = array(
       'output' =>   $output ,
       'form_id'   => md5(sprintf('[wpforms id="%s"]',  $form_id)),
-      'title'   => 'Book <span class="marked">with</span> '. $first_name ,
+      'title'   => 'Book <span class="marked">at</span> '. $obj->post_title  ,
       'comment' => 'Let’s get you booked in for a free consultation',
     );
 
     print_theme_template_part('register-popup', 'globals', $args);
+  }
+
+  // public static function print_mobile_cta(){
+
+  //   $obj = get_queried_object();
+  //   $form_id = get_option('clinic_subscription_form' );
+
+  //   $args = array(
+  //     'form_id' => md5(sprintf('[wpforms id="%s"]',  $form_id)),
+  //     'text_cta'      => get_field('cta_title', $obj->ID)?:get_option('mobile_text_cta'),
+
+  //     'mobile_stars'      => get_field('feed_stars', $obj->ID)?:get_option('mobile_stars'),
+
+  //     'mobile_rate'      => get_field('feed_rate_desc', $obj->ID)?:get_option('mobile_rate'),
+
+  //     'price'         => get_field('cta_price', $obj->ID)?:get_option('mobile_price_value'),
+  //     'per_month'     => get_field('per_month', $obj->ID),
+  //   );
+
+  //   print_theme_template_part('mobile-cta', 'clinics', $args);
+  // }
+
+  public static function print_mobile_cta(){
+    if(!function_exists('get_field')) return;
+    $obj = get_queried_object();
+
+    $form_id = get_option('clinic_subscription_form');
+    $shortcode = sprintf('[wpforms id="%s"]',  $form_id);
+    $form    = do_shortcode($shortcode);
+    $treatments = get_posts(array(
+      'posts_per_page' => -1,
+      'post_type' => 'theme_treatment'
+    ));
+    $options = '';
+
+    foreach ($treatments as $t) {
+      $options .= sprintf('<option value="%1$s" >%1$s</option>', $t->post_title);
+    }
+
+    $form = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
+
+    $form_online = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
+    $form_id = get_option('clinic_subscription_form');
+    $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
+    $form    = do_shortcode($shortcode);
+    $form = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
+
+    $form = str_replace('%clinic_name%', $obj->post_title, $form );
+    $form_inclicnic = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
+
+
+    $args = array(
+      'form_online'    => $form_online,
+      'form_inclicnic' => $form_inclicnic,
+      'title_inclinic'   => 'Book <span class="marked">at</span> '. $obj->post_title  ,
+      'text_cta'      => get_field('cta_title', $obj->ID)?:get_option('mobile_text_cta'),
+
+      'mobile_stars'      => get_field('feed_stars', $obj->ID)?:get_option('mobile_stars'),
+
+      'mobile_rate'      => get_field('feed_rate_desc', $obj->ID)?:get_option('mobile_rate'),
+
+      'price'         => get_field('cta_price', $obj->ID)?:get_option('mobile_price_value'),
+      'per_month'     => get_field('per_month', $obj->ID),
+    );
+
+    print_theme_template_part('mobile-cta', 'clinics', $args);
   }
 }
 
