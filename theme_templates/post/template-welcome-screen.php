@@ -65,7 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
       <div class="col-md-6 img">
         <?php if ($video_url): ?>
-         <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+         <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>',event)" alt="">
         <?php endif ?>
         <img src="<?php echo $image_mobile; ?>" class="img  show-mobile" alt="">
       </div>
