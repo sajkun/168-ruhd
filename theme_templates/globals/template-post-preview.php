@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="post-preview__info">
     <p class="post-preview__category"><?php echo $category ?></p>
 
-    <p class="post-preview__title"><?php echo $title ?></p>
+    <a href="<?php echo $permalink; ?>"  class="post-preview__title"><?php echo $title ?></a>
 
 
     <?php if ($video_url): ?>

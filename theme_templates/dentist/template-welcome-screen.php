@@ -6,13 +6,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <style type="text/css">
+  @media(max-width: 767px){
     .carousel{
       <?php if ($bg_color): ?>
         background-color:<?php echo $bg_color; ?>;
       <?php endif ?>
+
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+
+      background-image: url(<?php echo $image_mobile ?>);
+      background-position: 100% 100%;
     }
+  }
 
-
+  @media(min-width: 768px){
+    .carousel{
+      background-image: url(<?php echo $image ?>);
+      background-size: cover;
+    }
+  }
 </style>
 
 <div class="container-xxl no-padding">
@@ -44,8 +57,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
         <div class="spacer-h-150 spacer-h-md-100"></div>
       </div>
-      <div class="col-md-6 img valign-bottom">
-        <img src="<?php echo $image; ?>" class="img team-photo hide-mobile" alt="" >
+      <div class="col-md-6 img">
+        <?php if ($video_url): ?>
+          <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>', event)" alt="">
+          <div class="spacer-h-100 spacer-h-md-0"></div>
+        <?php endif ?>
       </div>
     </div>
 

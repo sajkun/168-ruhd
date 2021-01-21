@@ -91,12 +91,8 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
       <div class="col-md-6 img">
         <?php if ($video_url): ?>
-          <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+          <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>', event)" alt="">
           <div class="spacer-h-100 spacer-h-md-0"></div>
-        <?php endif ?>
-
-        <?php if ($image1): ?>
-        <img src="<?php echo $image1; ?>" class="img  show-mobile" alt="">
         <?php endif ?>
       </div>
     </div>

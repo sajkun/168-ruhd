@@ -9270,6 +9270,7 @@ ul {
   line-height: normal;
   text-align: center;
   text-transform: uppercase;
+  text-decoration: none;
   margin: 0;
 }
 
@@ -9284,12 +9285,18 @@ ul {
   line-height: 66px;
   text-align: center;
   margin: 0 0 20px;
+  text-decoration: none;
+  transition: all .1s;
 }
 
 @media (min-width: 768px) {
   .post-preview__title {
     font-size: 45px;
   }
+}
+
+.post-preview__title:hover {
+  color: #ffa574;
 }
 
 .post-preview__read {
@@ -9532,6 +9539,7 @@ ul {
   background: #1a1c1a;
   position: relative;
   overflow: unset;
+  margin-top: -1px;
 }
 
 .carousel.clinics:after, .carousel.clinics:before {

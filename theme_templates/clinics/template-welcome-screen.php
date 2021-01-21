@@ -71,7 +71,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
       <div class="col-md-6 img valign-bottom">
         <?php if ($video_url): ?>
-        <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+        <img src="<?php echo THEME_URL?>/assets/images/play-button.png" class=" trigger-video" onclick="play_video('<?php echo $video_url; ?>', event)" alt="">
         <?php endif ?>
         <img src="<?php echo $image; ?>" class="img mobile-friendly" alt="">
       </div>
