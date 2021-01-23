@@ -36,7 +36,7 @@ class theme_dentist_output{
     $args = array(
       'title'         =>    $prefix . get_field('first_name', $obj->ID) . ' '.get_field('last_name', $obj->ID),
       'category'      => implode(', ', $cat),
-      'bg_color'      => '#f8e8d8',
+      'bg_color'      => get_field('bg_color', $obj->ID)?:'#f8e8d8',
       'grade'         => get_field('grades', $obj->ID),
       'doctor_post'   => get_field('doctor_post', $obj->ID),
       'about'         => get_field('about', $obj->ID),
