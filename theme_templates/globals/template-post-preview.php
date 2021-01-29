@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
     <?php if ($video_url): ?>
-     <a href="javascript:void(0)" class=" trigger-video-link" onclick="play_video('<?php echo $video_url; ?>')" alt="">
+     <a href="javascript:void(0)" class=" trigger-video-link" onclick="play_video('<?php echo $video_url; ?>', event)" alt="">
         Play Video
      </a>
 
