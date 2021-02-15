@@ -10,8 +10,8 @@ function vc_before_init_pricing_container(){
       'base'        => 'pricing_container',
       'name'        => __( 'Pricing container', 'theme-translation' ), //
       'category'    => __( 'Theme Shortcodes' ),
-      'icon'        => THEME_URL.'/assets/images/icons/pound.png',
-      "as_parent" => array('only' => 'pricing_item'),
+      // 'icon'        => THEME_URL.'/assets/images/icons/pound.png',
+      "as_parent" => array('only' => 'pricing_item,pricing_title'),
       "content_element" => true,
       "show_settings_on_create" => true,
       "is_container" => true,
