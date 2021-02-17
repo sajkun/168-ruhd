@@ -37,6 +37,11 @@ function vc_before_init_pricing_title(){
           "heading" => __('Category', 'theme-translation'),// translate
           'param_name' => 'category',
         ),
+        array(
+          'type' => 'attach_image',
+          "heading" => __('Icon', 'theme-translation'),// translate
+          'param_name' => 'image',
+        ),
       ),
   ));
 }
@@ -106,13 +111,16 @@ class WPBakeryShortCode_pricing_title extends WPBakeryShortCode {
    protected function content( $atts, $content = null ) {
     extract( shortcode_atts( array(
       'category' => '',
+      'image' => '',
     ), $atts ) );
 
     if(!$category){
       return;
     }
 
-    return sprintf('<div class="col-12"><span class="section-title">%s</span> <div class="spacer-h-20"></div></div>', $category);
+    $img = wp_get_attachment_image_url( $image, 'icon');
+
+    return sprintf('<div class="col-12"><img class="treatment-icon" src="%s"><span class="pricing-title">%s</span> <div class="spacer-h-20"></div></div>',$img ,$category);
    }
 }
 
