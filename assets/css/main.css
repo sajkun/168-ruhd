@@ -6658,6 +6658,16 @@ div.contrast {
 }
 
 @media (max-width: 767px) {
+  .theme_campaign-template-default .site-header {
+    background: #1a1c1a;
+  }
+}
+
+.theme_campaign-template-default .site-header .regular {
+  opacity: 0;
+}
+
+@media (max-width: 767px) {
   .site-header.contrast-header, .site-header.contrast {
     background-color: #1a1c1a;
   }
