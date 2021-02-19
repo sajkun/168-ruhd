@@ -6663,7 +6663,7 @@ div.contrast {
   }
 }
 
-.site-header.active {
+.theme_campaign-template-default .site-header .site-header.active {
   background-color: #1a1c1a;
 }
 
@@ -6690,7 +6690,7 @@ div.contrast {
   margin-bottom: -1px;
 }
 
-.contrast-header .site-header__top .call-link,
+.theme_campaign-template-default .site-header__top .call-link .contrast-header .site-header__top .call-link,
 .contrast .site-header__top .call-link,
 .active .site-header__top .call-link {
   color: #8c8a89;
@@ -6713,7 +6713,7 @@ div.contrast {
   font-weight: 700;
 }
 
-.contrast-header .site-header__top .chat-button,
+.theme_campaign-template-default .site-header__top .chat-button .contrast-header .site-header__top .chat-button,
 .contrast .site-header__top .chat-button,
 .active .site-header__top .chat-button {
   color: #8c8a89;
@@ -6772,13 +6772,13 @@ div.contrast {
   color: #555352;
 }
 
-.contrast-header .site-header__main .about-menu li a,
+.theme_campaign-template-default .site-header__main .about-menu li a .contrast-header .site-header__main .about-menu li a,
 .contrast .site-header__main .about-menu li a,
 .active .site-header__main .about-menu li a {
   color: #fff;
 }
 
-.contrast-header .site-header__main .about-menu li a:hover,
+.theme_campaign-template-default .site-header__main .about-menu li a .contrast-header .site-header__main .about-menu li a:hover,
 .contrast .site-header__main .about-menu li a:hover,
 .active .site-header__main .about-menu li a:hover {
   color: #eeab7e;
@@ -6824,7 +6824,7 @@ div.contrast {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAXklEQVQYV13OYQ2DQABD4fecTAIOsICDgQSc4ICTgINZmIQ5KbkLkOz6s/nS1CRf4KOudEmyAaNJZmAHirrcLkkB3sBiLXv4B7Q01MEf8GoLWtd40AUH4AAmtX5tOQESxCcvA390/wAAAABJRU5ErkJggg==);
 }
 
-.site-header.active .dropdown-trigger {
+.theme_campaign-template-default .site-header .site-header.active .dropdown-trigger {
   color: #eeab7e;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAXUlEQVQYV12OUQ2AUAwDr0qwgAQsoICHA6TgAFCABSRgASUlI7yw0K8ld1krUmy3wA70ks6KVA/bBViAC2iAUdIa/JGSsEkqtgMOVdRfSJ8/0XZ0H5KmvO9tmIHuBufDJzANgk5PAAAAAElFTkSuQmCC);
 }
@@ -6852,7 +6852,7 @@ div.contrast {
   transition: all .3s;
 }
 
-.contrast-header .clinics-menu li a,
+.theme_campaign-template-default .clinics-menu li a .contrast-header .clinics-menu li a,
 .contrast .clinics-menu li a,
 .active .clinics-menu li a {
   color: #8c8a89;
@@ -6992,7 +6992,7 @@ div.contrast {
   font-weight: 700;
 }
 
-.contrast .menu-label,
+.theme_campaign-template-default .menu-label .contrast .menu-label,
 .contrast-header .menu-label,
 .active .menu-label {
   color: #8c8a89;

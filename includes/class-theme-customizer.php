@@ -179,6 +179,46 @@ class velesh_theme_customizer{
       );
 
       $wp_customize->add_setting(
+          'campaing_subscription_form_inclinic',
+          array(
+              'default'    => '',
+              'transport'  => 'postMessage',
+              'type'       => 'option'
+          )
+      );
+
+      $wp_customize->add_control(
+        'campaing_subscription_form_inclinic',
+        array(
+            'section'   => 'theme_forms_section',
+            'label'     => __('Campaign Inlcinic Visit Form', 'theme-translations'),
+            'type'      => 'select',
+            'settings'  => 'campaing_subscription_form_inclinic',
+            'choices' => $choices,
+         )
+      );
+
+      $wp_customize->add_setting(
+          'campaing_subscription_form_online',
+          array(
+              'default'    => '',
+              'transport'  => 'postMessage',
+              'type'       => 'option'
+          )
+      );
+
+      $wp_customize->add_control(
+        'campaing_subscription_form_online',
+        array(
+            'section'   => 'theme_forms_section',
+            'label'     => __('Campaign Visit Form Online', 'theme-translations'),
+            'type'      => 'select',
+            'settings'  => 'campaing_subscription_form_online',
+            'choices' => $choices,
+         )
+      );
+
+      $wp_customize->add_setting(
           'subscription_form_emergency',
           array(
               'default'    => '',
