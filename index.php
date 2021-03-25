@@ -36,6 +36,7 @@ $data = get_queried_object();
 </div>
 
 <?php
+    do_action('do_theme_before_get_footer');
  ?>
 
 <?php get_footer(); ?>

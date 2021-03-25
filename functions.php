@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class velesh_init_theme{
 
   /* main style location  */
-  public $main_style = '/assets/css/main.min22.css';
+  public $main_style = '/assets/css/main.min23.css';
 
   /*theme style file slug*/
   public $main_style_slug = 'theme-main-style-dev1';
@@ -29,13 +29,13 @@ class velesh_init_theme{
   public $font = '/assets/fonts/font.css';
 
   /* main script location  */
-  public $main_script= '/assets/script/main10.js';
+  public $main_script= '/assets/script/main11.js';
 
   /* main script slug */
   public $main_script_slug = 'theme-main-script-dev1';
 
   /* svg sprites files slug for local storage */
-  public $svg_sprite_slug = 'svg_sprite_168-2';
+  public $svg_sprite_slug = 'svg_sprite_168-4';
 
 
   /**
@@ -119,6 +119,10 @@ class velesh_init_theme{
 
     wp_enqueue_script('owl-carousel',THEME_URL.'/assets/libs/owlcarousel/js/owl.carousel.min.js', array(), THEME_VERSION, true);
 
+    wp_enqueue_script('velocity',THEME_URL.'/assets/libs/velocity/velocity.min.js', array(), THEME_VERSION, true);
+
+    wp_enqueue_script('vuejs',THEME_URL.'/assets/libs/vuejs/prod.js', array(), THEME_VERSION, true);
+
     wp_enqueue_script($this->main_script_slug, THEME_URL.$this->main_script, array('jquery'), THEME_VERSION, true);
 
   }
@@ -163,7 +167,8 @@ class velesh_init_theme{
     }
 
 
-     add_svg_sprite($this->svg_sprite_slug, THEME_URL.'/assets/svg_sprite/symbol_sprite.html');
+     add_svg_sprite($this->svg_sprite_slug, THEME_URL.'/assets/svg_sprite/symbol_sprite2.html');
+
   }
 
 
@@ -280,7 +285,8 @@ class velesh_init_theme{
    */
   public function print_inline_data_body(){
     print_inline_style(THEME_URL.'/assets/fonts/fonts.css', 'theme_fonts_170');
-    add_svg_sprite($this->svg_sprite_slug, THEME_URL.'/assets/svg_sprite/symbol_sprite.html');
+
+    add_svg_sprite($this->svg_sprite_slug, THEME_URL.'/assets/svg_sprite/symbol_sprite2.html');
   }
 
 

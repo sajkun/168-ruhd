@@ -690,10 +690,10 @@ if(document.getElementById('online-visit')){
     mixins: [animation_mixin],
 
     data: {
-      show: true,
-      is_loaded: true,
+      show: false,
+      is_loaded: false,
       is_completed: false,
-      show_sidebar: true,
+      show_sidebar: false,
       step: 1,
 
       customer_data: {
@@ -726,7 +726,6 @@ if(document.getElementById('online-visit')){
 
     watch: {
       show: function(show){
-        this.is_loaded = false;
         var vm = this;
         if(!show){
           Vue.nextTick(function(){
@@ -991,9 +990,7 @@ if(document.getElementById('online-visit')){
 }
 
 function show_online_visit(){
-  if(document.getElementById('online-visit')){
     online_visit.show = true;
-  }
 }
 
 

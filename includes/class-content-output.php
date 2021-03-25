@@ -539,4 +539,11 @@ class theme_content_output{
     echo "</div>";
 
   }
+
+
+
+  public static function print_online_journey(){
+    $args = array();
+    print_theme_template_part('online-journey', 'globals', $args);
+  }
 }

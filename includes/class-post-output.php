@@ -159,4 +159,5 @@ class theme_post_output{
 
     print_theme_template_part('mobile-cta', 'post', $args);
   }
+
 }

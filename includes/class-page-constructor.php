@@ -92,6 +92,7 @@ class theme_construct_page{
     }
 
     add_action('do_theme_after_footer', array('theme_content_output', 'print_wp_forms_popup'), PHP_INT_MAX);
+    add_action('do_theme_before_get_footer', array('theme_content_output', 'print_online_journey'), PHP_INT_MAX);
   }
 
 

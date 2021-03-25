@@ -32,7 +32,8 @@ class WPBakeryShortCode_read_more_btn extends WPBakeryShortCode {
 
     $args = array(
       'link_data'  => ($trigger_form)? array('href' =>'javascript:void(0)') : $link_data,
-      'trigger_form'  => $trigger_form,
+      'trigger_form'  => $trigger_form && $alternate_action != 'online_journey',
+      'alternate_action'  => $alternate_action,
       'text'          => $text,
       'form_id'       => $form_id,
     );
@@ -78,6 +79,7 @@ function vc_before_init_read_more_btn(){
             'Simple Link' => 'basic',
             'Show Inclinic Visit Form' => 'default_subscription_form_inclinic',
             'Show Online Visit Form'   => 'default_subscription_form',
+            'Online Journey'   => 'online_journey',
           ),
         ),
       ),

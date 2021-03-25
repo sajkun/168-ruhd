@@ -90,7 +90,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <b class="cta__item-info">Same-day appointments available</b>
               </div>
 
-              <div class="cta__item not-active" data-target="form-online">
+              <div class="cta__item not-active" data-target="form-online" onclick="show_online_visit()">
                 <svg class="svg-icon-phone"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone"></use></svg>
 
                 <h4 class="cta__item-title">Online Visit (Coming Soon)</h4>
