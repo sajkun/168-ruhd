@@ -1,4 +1,5 @@
-
+var animation_mixin;
+var online_visit;
 /*!
  * Masonry PACKAGED v4.2.2
  * Cascading grid layout library
@@ -471,3 +472,299 @@ jQuery(document.body).on('click','.popup',function(e){
     jQuery(this).closest('.popup').removeClass('shown');
   }
 })
+animation_mixin = {
+  methods:{
+   beforeEnter: function (el) {
+      el.style.opacity = 0
+    },
+
+    enter_opacity: function (el, done) {
+      const width = getComputedStyle(el).width;
+      const height = getComputedStyle(el).height;
+
+      el.style.width = width;
+      el.style.position = 'absolute';
+      el.style.width = height;
+      el.style.visibility = 'hidden';
+
+
+      el.style.width = null;
+      el.style.position = null;
+      el.style.visibility = null;
+      el.style.height = 0;
+
+      getComputedStyle(el).height;
+
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 1, height: height },
+          { complete: done }
+        )
+      }, delay)
+    },
+
+    leave_opacity: function (el, done) {
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 0 },
+          { complete: done }
+        )
+      }, delay)
+    },
+
+    enter_height: function (el, done) {
+      const width = getComputedStyle(el).width;
+
+      el.style.width = width;
+      el.style.position = 'absolute';
+      el.style.visibility = 'hidden';
+      el.style.height = 'auto';
+
+      const height = getComputedStyle(el).height;
+
+      el.style.width = null;
+      el.style.position = null;
+      el.style.visibility = null;
+      el.style.height = 0;
+
+      getComputedStyle(el).height;
+
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 1, height: height },
+          { complete: done }
+        )
+      }, delay)
+    },
+
+    leave_height: function (el, done) {
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 0, height: 0 },
+          { complete: done }
+        )
+      }, delay)
+    },
+
+    enterAfter: function(el){
+      el.style.height = 'auto';
+
+      if(typeof(this.update_scroll)!=='undefined'){
+        this.update_scroll();
+      }
+    },
+
+    leaveAfter: function(el){
+      if(typeof(this.update_scroll)!=='undefined'){
+        this.update_scroll();
+      }
+    }
+  }
+}
+if(document.getElementById('online-visit')){
+  online_visit = new Vue({
+    el: '#online-visit',
+
+    mixins: [animation_mixin],
+
+    data: {
+      show: true,
+      is_loaded: false,
+      is_completed: false,
+      show_sidebar: false,
+      step: 1,
+
+      customer_data: {
+        first_name: '',
+        last_name: '',
+        phone: '',
+        email: '',
+        look_to_archive: ''
+      },
+
+      validation:{
+        first_name: true,
+        last_name: true,
+        phone: true,
+        email: true,
+      },
+
+      alerts: [],
+    },
+
+    computed: {},
+
+    watch: {
+      'customer_data.look_to_archive': function(val){
+        if(val){
+          this.change_step('next');
+        }
+      },
+      'customer_data.first_name': function(val){
+        if(val){
+          this.validation.first_name  = this.valid_name(val);
+        }else{
+          this.validation.first_name = false;
+        }
+      },
+
+      'customer_data.last_name': function(val){
+        if(val){
+          this.validation.last_name  =this.valid_name(val);
+        }else{
+          this.validation.last_name = false;
+        }
+      },
+
+      'customer_data.phone': function(val){
+        if(val){
+          this.validation.phone  = this.valid_phone(val);
+        }else{
+          this.validation.phone = false;
+        }
+      },
+
+      'customer_data.email': function(val){
+        if(val){
+          this.validation.email = true;
+        }else{
+          this.validation.email = false;
+        }
+      },
+    },
+
+    mounted: function(){
+      var vm = this;
+
+      setTimeout(function(){
+        vm.is_loaded = true;
+      }, 1100);
+
+      setTimeout(function(){
+        vm.show_sidebar = true;
+      }, 1900);
+    },
+
+    methods: {
+      change_step: function(val){
+        var vm = this;
+        switch(val){
+          case 'next':
+
+            if(!vm.validate(val)){
+              vm.show_alerts();
+              return;
+            }
+
+            var step = vm.step;
+            step++;
+            step = Math.min(4, step);
+            vm.step = step;
+            break;
+          case 'prev':
+           var step = vm.step;
+            step--;
+            step = Math.max(0, step);
+            vm.step = step;
+            break;
+          default:
+            vm.step = val;
+            break;
+        }
+      },
+
+      valid_name: function(val){
+        var valid = val.search(/\d/g) < 0;
+        valid = val.length == 0? false: valid;
+        return valid;
+      },
+
+      valid_phone: function(val){
+        var valid = true;
+        valid = val.search(/[+]{0,1}[0-9]{1,10}/) >= 0;
+        var limit = val.search(/[+]/) >=0 ? 13 : 11;
+        valid = val.length > limit ?  false : valid;
+
+        console.log(limit);
+        console.log(val.length);
+        return valid;
+      },
+
+      valid_email: function(email) {
+          const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(String(email).toLowerCase());
+      },
+
+      validate: function(step){
+        var valid = false;
+        var may_be_step = this.step;
+
+        // switch(step){
+        //   case 'next':
+        //     may_be_step++;
+        //     break;
+        //   case 'prev':
+        //     may_be_step--;
+        //     break;
+        //   default:
+        //     may_be_step = step;
+        //     break;
+        // }
+
+        switch(may_be_step){
+          case 1:
+            this.validation.email = this.valid_email(this.customer_data.email);
+            this.validation.first_name = this.valid_name(this.customer_data.first_name);
+            this.validation.last_name = this.valid_name(this.customer_data.last_name);
+            this.validation.phone = this.valid_phone(this.customer_data.phone);
+
+            valid = this.validation.email && this.validation.first_name &&  this.validation.last_name &&  this.validation.phone;
+
+            if(!this.validation.email){
+              this.alerts.push('Email is not correct');
+            }
+            if(!this.validation.first_name){
+              this.alerts.push('First name is not entered correctly');
+            }
+            if(!this.validation.last_name){
+              this.alerts.push('Last name is not entered correctly');
+            }
+            if(!this.validation.email){
+              this.alerts.push('Phone should contain only digits or "+" symbol');
+            }
+            break;
+          case 2:
+             valid = !this.customer_data.look_to_archive? false : true;
+
+             if(!valid){
+               this.alerts.push('Please, select what would you like to archive');
+             }
+            break;
+          case 3:
+            break;
+          case 4:
+            break;
+        }
+
+        return valid;
+      },
+
+      show_alerts: function(){
+        var string = this.alerts.join('\n');
+
+        if(string.length){
+          alert(string);
+          this.alerts = [];
+        }
+      },
+    },
+  });
+}

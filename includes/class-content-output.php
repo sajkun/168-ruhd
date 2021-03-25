@@ -69,8 +69,8 @@ class theme_content_output{
       'replace_chat' => get_field('replace_chat',$obj_id),
       'main_menu'    => $main_menu,
       'clinics_menu' => $clinics_menu,
-      'contrast'     => get_post_meta( $obj_id , 'invert_header',true) || $obj->post_type == 'theme_clinics' || is_category() || is_home(),
-      'contrast2'     =>  $obj->post_type == 'theme_clinics' || is_category() || is_home(),
+      'contrast'     => get_post_meta( $obj_id , 'invert_header',true) || $obj->post_type == 'theme_clinics' || is_category() || is_front_page(),
+      'contrast2'     =>  $obj->post_type == 'theme_clinics' || is_category() || is_front_page(),
       'form_id'   => md5(sprintf('[wpforms id="%s"]',  $default_form_id)),
       'no_toggle_contrast' => get_post_meta( $obj_id , 'invert_header',true) || $obj->post_type == 'theme_clinics' || is_category() || is_home()? 'no-toggle' : '',
     );
