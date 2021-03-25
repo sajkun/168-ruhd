@@ -148,7 +148,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <svg class="svg-icon-house"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-house"></use></svg>
 
                     <h4 class="cta__item-title">In Clinic Visit</h4>
-                    <p class="cta__item-text">Book a free appointment at either of our London or Manchester clinics.</p>
+                    <p class="cta__item-text">Book a free consultation with our treatment co-ordinator.</p>
 
                     <b class="cta__item-info">Same-day appointments available</b>
                   </div>
