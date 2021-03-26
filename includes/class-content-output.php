@@ -550,7 +550,6 @@ class theme_content_output{
 
     $online_journey_settings = get_option('online_journey_settings');
 
-
     $args = array(
       'show' => isset($online_journey_settings['endpoint']) && !empty($online_journey_settings['endpoint']),
 
