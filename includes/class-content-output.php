@@ -181,8 +181,6 @@ class theme_content_output{
 
     $obj = get_queried_object();
 
-    clog( $obj );
-
     switch ($obj->post_type) {
       case 'theme_treatment':
         $default_form_id = get_option('treatment_subscription_form_inclicnic');
@@ -543,7 +541,19 @@ class theme_content_output{
 
 
   public static function print_online_journey(){
-    $args = array();
+
+    $page_privacy_id = get_option('theme_page_privacy');
+    $privacy = get_post( $page_privacy_id );
+
+    $page_terms_id = get_option('theme_page_terms_conditions');
+    $terms = get_post( $page_terms_id );
+
+
+    $args = array(
+      'privacy_url' => $page_privacy_id && $privacy  && 'publish' == $privacy->post_status ? get_permalink($privacy ) : false,
+      'terms_url' => $page_terms_id && $terms  && 'publish' == $terms->post_status ? get_permalink($terms ) : false,
+    );
+
     print_theme_template_part('online-journey', 'globals', $args);
   }
 }

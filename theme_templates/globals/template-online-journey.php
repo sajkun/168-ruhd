@@ -2,10 +2,9 @@
 if(!is_user_logged_in()){
   return;
 }
-clog('journey')
 ?>
 
-<div class="online-visit-popup contrast" id="online-visit" v-if="show">
+<div class="online-visit-popup contrast visuallyhidden" id="online-visit" v-show="show">
 
   <!-- ****************************************** -->
   <!-- ****************************************** -->
@@ -236,7 +235,20 @@ clog('journey')
 
             <div class="spacer-h-20"></div>
 
-            <span class="right-sidebar__comment">By using Ruh+, you agree to our <a href="#">terms and conditions</a> and <a href="#">privacy policy</a>.</span>
+
+            <?php if ($privacy_url || $terms_url ): ?>
+            <span class="right-sidebar__comment">By using Ruh+, you agree to our
+              <?php if ( $terms_url ): ?>
+              <a href="<?php echo $terms_url; ?>" target="_blank">terms and conditions</a>
+              <?php endif ?>
+              <?php if ( $privacy_url && $terms_url ): ?>
+              and
+              <?php endif ?>
+              <?php if ( $privacy_url ): ?>
+              <a href="<?php echo $privacy_url; ?>" target="_blank">privacy policy</a> .
+              <?php endif ?>
+            </span>
+            <?php endif ?>
 
             <div class="spacer-h-30"></div>
           </div><!-- right-sidebar__page -->
@@ -340,7 +352,7 @@ clog('journey')
 
             <div class="spacer-h-30"></div>
 
-             <a href="#" v-on:click.prevent="change_step('next')" class="right-sidebar__submit" :class="{'not-active' : (!photo_1 || !photo_2)}">Upload Photos and continue<svg class="icon svg-icon-bracket"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-bracket"></use></svg> </a>
+             <a href="#" v-on:click.prevent="change_step('next')" class="right-sidebar__submit" :class="{'not-active' : (!image_loaded.photo_1 || !image_loaded.photo_2)}">Submit Photos and continue<svg class="icon svg-icon-bracket"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-bracket"></use></svg> </a>
           </div><!-- right-sidebar__page -->
         </transition>
 
@@ -705,7 +717,7 @@ clog('journey')
 
                 <div class="spacer-h-30"></div>
 
-                 <a href="#" v-on:click.prevent="change_step('next')" class="right-sidebar__submit" :class="{'not-active' : (!photo_1 || !photo_2)}">Upload Photos and continue<svg class="icon svg-icon-bracket"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-bracket"></use></svg> </a>
+                 <a href="#" v-on:click.prevent="change_step('next')" class="right-sidebar__submit" :class="{'not-active' : (!image_loaded.photo_1 || !image_loaded.photo_2)}">Submit Photos and continue<svg class="icon svg-icon-bracket"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-bracket"></use></svg> </a>
               </div><!-- bottom-holder__page -->
            </transition>
 

@@ -15,6 +15,7 @@ class theme_filter_class{
     add_action('wp_head', array($this,'add_body_filter') );
     add_action('pre_get_posts', array($this,'all_posts') );
 
+    add_filter('display_post_states', array($this, 'show_contact_page_state'), 10, 2);
   }
 
   public static function add_body_filter(){
@@ -34,6 +35,21 @@ class theme_filter_class{
 
     return $query;
   }
+
+  public static function show_contact_page_state( $states, $post ) {
+      if ( 'page' == get_post_type( $post->ID )){
+        switch ($post->ID) {
+          case get_option('theme_page_privacy'):
+              $states[] = __('Privacy Policy');
+            break;
+          case get_option('theme_page_terms_conditions'):
+              $states[] = __('Terms and Conditions');
+            break;
+
+        }
+      }
+      return $states;
+    }
 }
 
 new theme_filter_class();

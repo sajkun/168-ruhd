@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class velesh_init_theme{
 
   /* main style location  */
-  public $main_style = '/assets/css/main.min23.css';
+  public $main_style = '/assets/css/main.min24.css';
 
   /*theme style file slug*/
   public $main_style_slug = 'theme-main-style-dev1';
@@ -29,7 +29,7 @@ class velesh_init_theme{
   public $font = '/assets/fonts/font.css';
 
   /* main script location  */
-  public $main_script= '/assets/script/main11.js';
+  public $main_script= '/assets/script/main12.js';
 
   /* main script slug */
   public $main_script_slug = 'theme-main-script-dev1';
@@ -124,6 +124,8 @@ class velesh_init_theme{
     wp_enqueue_script('vuejs',THEME_URL.'/assets/libs/vuejs/prod.js', array(), THEME_VERSION, true);
 
     wp_enqueue_script($this->main_script_slug, THEME_URL.$this->main_script, array('jquery'), THEME_VERSION, true);
+
+
 
   }
 
@@ -277,6 +279,9 @@ class velesh_init_theme{
     );
 
     wp_localize_script($this->main_script_slug,'WP_URLS', $wc_urls);
+
+    $online_journey_settings = get_option('online_journey_settings');
+    wp_localize_script($this->main_script_slug, 'online_journey_settings', $online_journey_settings);
   }
 
 
@@ -436,8 +441,8 @@ class velesh_init_theme{
   */
   public function add_option_pages(){
     $options = array(
-      // 'about_us_page'        => __('About Us Page', 'theme-translations'),
-      // 'prizes_page'          => __('Prize\'s Page', 'theme-translations'),
+      // 'privacy'        => __('Privacy Policy', 'theme-translations'),
+      // 'terms_conditions'          => __('Terms and Conditions', 'theme-translations'),
       // 'contact_page'         => __('Contacts Page', 'theme-translations'),
       // 'faq_page'             => __('F.A.Q Page', 'theme-translations'),
     );
