@@ -548,8 +548,12 @@ class theme_content_output{
     $page_terms_id = get_option('theme_page_terms_conditions');
     $terms = get_post( $page_terms_id );
 
+    $online_journey_settings = get_option('online_journey_settings');
+
 
     $args = array(
+      'show' => isset($online_journey_settings['endpoint']) && !empty($online_journey_settings['endpoint']),
+
       'privacy_url' => $page_privacy_id && $privacy  && 'publish' == $privacy->post_status ? get_permalink($privacy ) : false,
       'terms_url' => $page_terms_id && $terms  && 'publish' == $terms->post_status ? get_permalink($terms ) : false,
     );

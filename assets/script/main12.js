@@ -693,7 +693,7 @@ if(document.getElementById('online-visit')){
       is_loaded: false,
       is_completed: false,
       show_sidebar: false,
-      step: 4,
+      step: 1,
       journey_count: -1,
 
       customer_data: {
@@ -933,53 +933,30 @@ if(document.getElementById('online-visit')){
 
       send_create_leadrequest: function(){
         console.log('send_create_leadrequest');
-        var form = new FormData();
-        form.append("action", "store_online_journey");
-
-        var settings = {
-          "async": true,
-          "crossDomain": true,
-          "url": "https://tracker.ruhdental.com/wp-admin/admin-ajax.php?action=store_online_journey",
-          "method": "POST",
-          "headers": {
-            "cache-control": "no-cache",
-            "postman-token": "2e9b0eaa-1848-e7b4-cd9d-e035678c5b28"
-          },
-          "processData": false,
-          "contentType": false,
-          "mimeType": "multipart/form-data",
-          "data": form
-        }
-
-        jQuery.ajax(settings).done(function (response) {
-          console.log(response);
-        });
-
-        return;
-
         var vm = this;
-
         jQuery.ajax({
-          url: online_journey_settings.endpoint,
-          data: {send_data: this.customer_data, action: 'store_online_journey'},
+          url: WP_URLS.wp_ajax_url,
           type: 'POST',
-          contentType: "application/json",
-          crossDomain: true,
+          // contentType: "application/json",
           dataType: "json",
-
-
-         "async": true,
-          "crossDomain": true,
-          "method": "POST",
-          "headers": {
-            "cache-control": "no-cache",
-          },
-          "processData": false,
-          // "contentType": false,
-          "mimeType": "multipart/form-data",
+          data: {send_data: this.customer_data, action: 'send_create_journey_request'},
         })
-        .done(function() {
+        .done(function(e) {
           console.log("success");
+
+          if(e.responce_code == 200){
+            vm.is_completed = true;
+            vm.is_loaded = true;
+
+            setTimeout(function(){
+              Vue.nextTick(function(){
+                 vm.show=false;
+              })
+            }, 10000)
+          }else{
+            alert(e.responce_message);
+            vm.show=false;
+          }
         })
         .fail(function() {
           console.log("error");
@@ -1053,17 +1030,6 @@ if(document.getElementById('online-visit')){
 
 
         this.send_create_leadrequest();
-        // this.is_completed = true;
-        // this.show_sidebar = false;
-
-
-        // setTimeout(function(){
-        //   vm.show=false;
-
-        //   Vue.nextTick(function(){
-        //     vm.resert_data();
-        //   })
-        // }, 3000)
       },
 
       upload_image_to_dropbox: function(file, path, name){

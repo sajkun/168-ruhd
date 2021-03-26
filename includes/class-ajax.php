@@ -25,10 +25,25 @@ class theme_ajax{
 
     $online_journey_settings = get_option('online_journey_settings');
 
+    $url = $online_journey_settings['endpoint'];
+
     $data = $_POST['send_data'];
 
+    $args = array(
+      'body' => $data,
+      'blocking'    => true,
+      'headers' => array(),
+      'cookies' => array()
+    );
+
+   $res =  wp_remote_post( $url, $args );
+
     wp_send_json( array(
-      'count' => $count,
+      'data' => $data,
+      'responce' => $res,
+      'responce_code' => $res['response']['code'],
+      'responce_message' => $res['response']['message'],
+      'responce_body' => json_decode($res['body']),
     ));
   }
 }
