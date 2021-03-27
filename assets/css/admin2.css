@@ -1,0 +1,73 @@
+.wp-menu-image img{
+  width: 24px!important;
+}
+
+.wp-menu-image img[src*=hand]{
+  width: 14px!important;
+}
+.wp-menu-image img[src*=house2]{
+  width: 20px!important;
+}
+
+
+
+.duh-hide-check{
+  display: none;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+.duh-tabs{
+  margin: 0 0 -2px;
+  padding: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.duh-tabs label{
+  padding: 5px 15px;
+  border: 1px solid transparent;
+  border-color: #ccd0d4;
+  background-color: #ccd0d4;
+  transition: all .1s;
+  border-radius: 5px 5px 0 0;
+  word-spacing: 0;
+}
+
+.duh-page-settings-content{
+  padding: 15px;
+  border: 1px solid #ccd0d4;
+  position: relative;
+  z-index: 1;
+}
+
+.duh-tabs li{
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.duh-page-settings-content{
+  display: none;
+   background: #fff;
+}
+
+
+#order-list-sort .block-item{
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+}
+
+#order-list-sort .block-item h3{
+  cursor: move;
+}
+
+#helpto:checked ~ .duh-tabs [for="helpto"]{
+  background: #fff;
+  border-bottom-color:#fff;
+}
+
+#helpto:checked ~ .helpto{
+  display: block;
+}

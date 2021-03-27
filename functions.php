@@ -29,7 +29,7 @@ class velesh_init_theme{
   public $font = '/assets/fonts/font.css';
 
   /* main script location  */
-  public $main_script= '/assets/script/main12.js';
+  public $main_script= '/assets/script/main13.js';
 
   /* main script slug */
   public $main_script_slug = 'theme-main-script-dev1';
@@ -156,7 +156,7 @@ class velesh_init_theme{
 
     wp_enqueue_script('theme-script', THEME_URL.'/assets/script/admin.js', array('jquery'), THEME_VERSION, true);
 
-    wp_enqueue_style( 'theme-admin-style', THEME_URL.'/assets/css/admin.css', THEME_VERSION );
+    wp_enqueue_style( 'theme-admin-style', THEME_URL.'/assets/css/admin2.css', THEME_VERSION );
 
     $settings_pages = array(
 

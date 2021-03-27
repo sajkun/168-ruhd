@@ -382,7 +382,7 @@ if(!is_user_logged_in() || !$show){
                 <label class="right-sidebar__selector"><input type="radio" name="confidence" value="Slightly" v-model="customer_data.confidence"><span class="text">Slightly</span></label>
               </div>
               <div class="col-4">
-                <label class="right-sidebar__selector"><input type="radio" name="confidence" v-model="customer_data.confidence" value="Alot"><span class="text">Alot</span></label>
+                <label class="right-sidebar__selector"><input type="radio" name="confidence" v-model="customer_data.confidence" value="A lot"><span class="text">A lot</span></label>
               </div>
             </div><!-- row -->
             <div class="spacer-h-20"></div>

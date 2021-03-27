@@ -99,36 +99,60 @@ class velesh_theme_meta_metasettings{
 
   public static function velesh_theme_settings_callback(){
 
-      $slug = 'online_journey_settings';
+    $slug = 'online_journey_settings';
 
-      if(isset($_POST['do_save']) && 'yes' == $_POST['do_save']){
-        $o_new = $_POST[$slug];
-        update_option( $slug, $o_new );
-      }
+    if(isset($_POST['do_save']) && 'yes' == $_POST['do_save']){
+      $o_new = $_POST[$slug];
+      update_option( $slug, $o_new );
+    }
 
+    $o = get_option($slug);
+  ?>
 
-      $o = get_option($slug);
-     ?>
-     <form action="<?php echo admin_url('options-general.php?page=velesh_theme_online_journey_settings')?>" method="POST">
+    <form action="<?php echo admin_url('options-general.php?page=velesh_theme_online_journey_settings')?>" method="POST">
 
-       <h3>Online Journey settings</h3>
+      <h3>Online Journey settings</h3>
 
+      <h4>Tracker Endpoint</h4>
 
-       <h4>Tracker Endpoint</h4>
-       <input type="text" class="text-large large-text" name="<?php echo $slug?>[endpoint]" value="<?php echo isset($o['endpoint'])? $o['endpoint'] : '' ?>">
+      <input type="text" class="text-large large-text" name="<?php echo $slug?>[endpoint]" value="<?php echo isset($o['endpoint'])? $o['endpoint'] : '' ?>">
 
-       <h4>Dropbox Access Token</h4>
-       <input type="text" class="text-large large-text" name="<?php echo $slug?>[token]"  value="<?php echo isset($o['token'])? $o['token'] : '' ?>">
+      <h4>Dropbox Access Token</h4>
 
-       <h4>Name of the folder in Dropbox</h4>
-       <input type="text" class="text-large large-text" name="<?php echo $slug?>[folder]"  value="<?php echo isset($o['folder'])? $o['folder'] : '' ?>">
+      <input type="text" class="text-large large-text" name="<?php echo $slug?>[token]"  value="<?php echo isset($o['token'])? $o['token'] : '' ?>">
 
-       <input type="hidden" value="yes" name="do_save">
+      <h4>Name of the folder in Dropbox</h4>
 
-       <br><br>
+      <input type="text" class="text-large large-text" name="<?php echo $slug?>[folder]"  value="<?php echo isset($o['folder'])? $o['folder'] : '' ?>">
 
-       <input type="submit" class="btn" value=" Save Settings">
-     </form>
+      <br><br>
+      <br><br>
+
+      <?php /*
+
+      <input type="radio" name="active-page" id="helpto" class="duh-hide-check"  checked="checked">
+
+      <ul class="duh-tabs">
+       <li> <label for="helpto"> Help to know options </label> </li>
+      </ul>
+
+      <div class="duh-page-settings-content helpto">
+        <h4>1st element</h4>
+        <input type="text" name="<?php echo $slug?>[how_to][''][text]">
+        <textarea name="<?php echo $slug?>[how_to][''][items]"></textarea>
+        <i>start every new element on new line</i>
+
+        <input type="submit" value="save" class="btn">
+      </div>
+
+      <br><br>
+      <br><br> */
+
+      ?>
+
+      <input type="hidden" value="yes" name="do_save">
+      <input type="submit" class="btn" value=" Save Settings">
+    </form>
 
     <?php
 

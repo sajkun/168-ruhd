@@ -11,9 +11,12 @@ class theme_ajax{
 
 
   public static function get_journey_count_cb(){
-    $count = get_option('journey_count')? get_option('journey_count') : -1;
+    $count = get_option('journey_count')? (int)get_option('journey_count') : 0;
     $count++;
-    update_option('journey_count', $count);
+
+    if(!update_option('journey_count', $count)){
+      add_option('journey_count', $count);
+    }
 
     wp_send_json( array(
       'count' => $count,

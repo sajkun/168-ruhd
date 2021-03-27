@@ -805,7 +805,7 @@ if(document.getElementById('online-visit')){
           vm.customer_data
           vm.is_loaded = true;
 
-          vm.dropbox_path = '/' + online_journey_settings.folder + '/' + val + '/';
+          vm.customer_data.dropbox_path = '/' + online_journey_settings.folder + '/' + val + '/';
 
           setTimeout(function(){
             vm.show_sidebar = true;
@@ -1081,6 +1081,7 @@ if(document.getElementById('online-visit')){
           const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return re.test(String(email).toLowerCase());
       },
+
 
       valid_name: function(val){
         var valid = val.search(/\d/g) < 0;
