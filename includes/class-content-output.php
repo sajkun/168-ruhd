@@ -250,7 +250,7 @@ class theme_content_output{
 
       'default_subscription_form_inclinic' => array(
         'title' => 'In <span class="marked">Clinic</span> Visit',
-        'comment' => 'Book a free appointment at either of our London or Manchester clinics.',
+        'comment' => 'Book a free consultation with our treatment co-ordinator.',
       ),
     );
 

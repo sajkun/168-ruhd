@@ -192,7 +192,7 @@ class theme_dentist_output{
       'output' =>   $output ,
       'form_id'   => md5(sprintf('[wpforms id="%s"]',  $form_id)),
       'title'   => 'Book <span class="marked">with</span> '. $first_name ,
-      'comment' => 'Let’s get you booked in for a free consultation',
+      'comment' => 'Book a free consultation with our treatment co-ordinator',
     );
 
     print_theme_template_part('register-popup', 'globals', $args);
