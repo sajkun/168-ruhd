@@ -22,9 +22,22 @@ if ( ! defined( 'ABSPATH' ) ) {
           <div class="spacer-h-50 spacer-h-lg-100"></div>
           <div class="spacer-h-lg-70"></div>
           <div class="info__content text-center text-left-md">
-            <div class="site-info" onclick="show_popup('<?php echo $form_id; ?>')">
+
+            <div class="site-info"
+            <?php if ($action_type == 'trigger'): ?>
+               onclick="show_popup('<?php echo $form_id; ?>')"
+            <?php endif ?>
+             >
              <span class="site-info__tag new"><?php echo $tag_text; ?></span>
-                <a href="javascript:void(0)" class="site-info__text light"><?php echo $advertisement; ?></a>
+                <a
+                <?php if ($action_type == 'trigger'): ?>
+                   href="javascript:void(0)"
+                  <?php else: ?>
+                   href="<?php echo $adv_url; ?>"
+                  <?php endif ?>
+                   class="site-info__text light">
+                  <?php echo $advertisement; ?>
+                </a>
             </div>
             <div class="spacer-h-30 spacer-h-md-40"></div>
             <?php if ($before_title): ?>

@@ -31,6 +31,25 @@ function vc_before_init_story_bg(){
           "heading" => __('Advertisement', 'theme-translation'),// translate
           'param_name' => 'advertisement',
         ),
+
+        array(
+          "type" => "vc_link",
+          "heading" => __("Advertisement Link", "theme-translations"),
+          "param_name" => "advertisement_link",
+         ),
+
+
+        array(
+          'type' => 'dropdown',
+          'heading' => __( 'Action Type',  "my-text-domain" ),
+          'param_name' => 'action_type',
+          'value' => array(
+            __( 'Work as link',  "my-text-domain"  ) => 'link',
+            __( 'Trigger popup',  "my-text-domain"  ) => 'trigger',
+          ),
+          "description" => __( "select the way advertisment will work", "my-text-domain" )
+        ),
+
         array(
           "type" => "textfield",
           "heading" => __("Before title", "theme-translations"),
@@ -52,7 +71,6 @@ function vc_before_init_story_bg(){
           "heading" => __("Video url", "theme-translations"),
           "param_name" => "video_url",
         ),
-
       ),
   ));
 }
@@ -68,6 +86,8 @@ class WPBakeryShortCode_story_bg extends WPBakeryShortCode {
       'title' => false,
       'text' => false,
       'video_url' => false,
+      'action_type' => 'trigger',
+      'advertisement_link' => '',
     ), $atts ) );
 
     $link_data = vc_build_link($video_url);
@@ -93,6 +113,8 @@ class WPBakeryShortCode_story_bg extends WPBakeryShortCode {
 
     $form_id  =  md5(sprintf('[wpforms id="%s"]',  $default_subscription_form));
 
+    $adv_url = vc_build_link($advertisement_link);
+
     $args = array(
       'stories'       => $posts_formatted,
       'tag_text'      => $tag_text,
@@ -100,6 +122,8 @@ class WPBakeryShortCode_story_bg extends WPBakeryShortCode {
       'advertisement' => $advertisement,
       'before_title'  => $before_title,
       'title'         => $title,
+      'action_type'   => $action_type,
+      'adv_url'       => $adv_url['url'],
       'text'          => $text,
       'form_id'          => $form_id,
       'video_url'     => $link_data['url'],
