@@ -11,6 +11,7 @@ class WPBakeryShortCode_info_head extends WPBakeryShortCode {
       'link' => '',
       'label' => '',
       'background' => '',
+      'action_type' => 'trigger',
     ), $atts ) );
 
 
@@ -29,6 +30,7 @@ class WPBakeryShortCode_info_head extends WPBakeryShortCode {
       'label'      => $label,
       'background' => $background,
       'form_id'    => $form_id,
+      'action_type'    => $action_type,
     );
 
     ob_start();
@@ -92,6 +94,16 @@ function vc_before_init_info_head(){
           'param_name' => 'background',
         ),
 
+        array(
+          'type' => 'dropdown',
+          'heading' => __( 'Action Type',  "my-text-domain" ),
+          'param_name' => 'action_type',
+          'value' => array(
+            __( 'Work as link',  "my-text-domain"  ) => 'link',
+            __( 'Trigger popup',  "my-text-domain"  ) => 'trigger',
+          ),
+          "description" => __( "select the way element will work", "my-text-domain" )
+        )
 
       ),
   ));
