@@ -44,10 +44,10 @@ function vc_before_init_story_bg(){
           'heading' => __( 'Action Type',  "my-text-domain" ),
           'param_name' => 'action_type',
           'value' => array(
-            __( 'Work as link',  "my-text-domain"  ) => 'link',
-            __( 'Trigger popup',  "my-text-domain"  ) => 'trigger',
+            __( 'Select',  "theme-translations"  ) => '---',
+            __( 'Work as link',  "theme-translations"  ) => 'link',
+            __( 'Trigger popup',  "theme-translations"  ) => 'trigger',
           ),
-          "description" => __( "select the way advertisment will work", "my-text-domain" )
         ),
 
         array(
@@ -55,6 +55,7 @@ function vc_before_init_story_bg(){
           "heading" => __("Before title", "theme-translations"),
           "param_name" => "before_title",
         ),
+
         array(
           "type" => "textfield",
           "heading" => __("Title", "theme-translations"),
@@ -114,6 +115,8 @@ class WPBakeryShortCode_story_bg extends WPBakeryShortCode {
     $form_id  =  md5(sprintf('[wpforms id="%s"]',  $default_subscription_form));
 
     $adv_url = vc_build_link($advertisement_link);
+
+
 
     $args = array(
       'stories'       => $posts_formatted,
