@@ -72,6 +72,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         <li><a href="#smile">Smile Stories</a></li>
         <?php endif ?>
 
+        <?php if ($before_after): ?>
+        <li><a href="#before_after">Before After</a></li>
+        <?php endif ?>
+
         <?php if ($insta_url): ?>
         <li><a href="<?php echo esc_url($insta_url);?>" target="_blank">Instagram</a></li>
         <?php endif ?>

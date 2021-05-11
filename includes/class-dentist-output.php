@@ -33,9 +33,12 @@ class theme_dentist_output{
 
     $prefix = get_field('prefix', $obj->ID)?: '';
 
+    $before_after = get_before_after_by_dentist($obj->ID);
+
     $args = array(
       'title'         =>    $prefix . get_field('first_name', $obj->ID) . ' '.get_field('last_name', $obj->ID),
       'category'      => implode(', ', $cat),
+      'before_after'  => $before_after,
       'bg_color'      => get_field('bg_color', $obj->ID)?:'#f8e8d8',
       'grade'         => get_field('grades', $obj->ID),
       'doctor_post'   => get_field('doctor_post', $obj->ID),
@@ -153,6 +156,11 @@ class theme_dentist_output{
             'display' => 'block',
             'title'   => get_field('what_is_title', $obj->ID),
             'text'    => apply_filters('the_content', get_field('what_is', $obj->ID)),
+         ),
+
+         'before_after' => array(
+            'show'  => true,
+            'before_after_items' => get_before_after_by_dentist($obj->ID),
          ),
        ),
      );

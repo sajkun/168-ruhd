@@ -24,6 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php echo $p['text'] ; ?>
                   </div>
                 <?php endif ?>
+
                 <?php if($p['smile_stories'] ): ?>
 
                   <div class="row smile-stories-cont justify-content-between">
@@ -47,6 +48,37 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </p>
                   </div>
                    <div class="spacer-h-30"></div>
+                <?php endif ?>
+
+                <?php if ($p['before_after_items'] && count($p['before_after_items'])  > 0): ?>
+                  <?php foreach ($p['before_after_items'] as $key => $treatment): ?>
+                    <?php foreach ($treatment['items'] as $slide):
+                    $image_before = wp_get_attachment_image_url($slide['image_before'], 'before_after');
+
+                    $image_after = wp_get_attachment_image_url($slide['image_after'], 'before_after');
+
+                    $dentist_name = trim(get_field('first_name', $slide['dentist']->ID) . ' ' .get_field('last_name', $slide['dentist']->ID))  ;
+                   ?>
+                    <div class="ba_wrapper">
+                      <div class="ba_data">
+                        <div class="row">
+
+                          <div class="col-6 valign-top">Dr. <?php echo $dentist_name ?></div>
+                          <div class="col-6 text-right valign-top"><?php echo $treatment['treatment']->post_title ?></div>
+                        </div>
+                      </div>
+                      <div class="ba-slider">
+                        <img src="<?php echo $image_after; ?>" alt="">
+                        <div class="resize">
+                          <img src="<?php echo $image_before ; ?>" alt="">
+                        </div>
+                        <span class="handle"></span>
+                      </div>
+                    </div>
+
+                    <?php endforeach ?>
+
+                  <?php endforeach ?>
                 <?php endif ?>
 
                 <?php if ($p['pricing_items']): ?>
@@ -94,7 +126,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                   </div>
                 </div>
-
                 <?php endif ?>
               </div>
               <?php endforeach ?>

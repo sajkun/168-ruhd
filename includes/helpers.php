@@ -303,3 +303,39 @@ if(!function_exists('include_php_from_dir')){
     }
   }
 }
+
+if(!function_exists('get_before_after_by_dentist')){
+  function get_before_after_by_dentist($dentist_id){
+    $args = array(
+      'post_type'      => 'theme_treatment',
+      'posts_per_page' => -1,
+      // 'fields'         => 'ids',
+    );
+
+    $treatments = get_posts($args);
+    // clog($treatments);
+
+    $before_after_items = array();
+
+    foreach ($treatments as $t) {
+      $_before_after_items  = get_field('before_after_items', $t->ID);
+
+      $_inf = array(
+        'items'  => array(),
+        'treatment' => $t,
+      );
+
+      if($_before_after_items){
+        $_inf['items'] = array_values(array_filter($_before_after_items, function($el) use ($dentist_id){
+          return $dentist_id == $el['dentist']->ID;
+        }));
+       }
+
+       if(count($_inf['items']) > 0){
+        $before_after_items[] = $_inf;
+       }
+    }
+
+    return $before_after_items;
+  }
+}
