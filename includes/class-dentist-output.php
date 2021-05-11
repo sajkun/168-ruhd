@@ -44,7 +44,7 @@ class theme_dentist_output{
       'insta_url'     => get_field('insta_url', $obj->ID) ,
       'image_mobile'  =>   get_field('image_mobile', $obj->ID)?:wp_get_attachment_image_url( $image_id, 'medium'),
       'image'         => get_field('image', $obj->ID)?:wp_get_attachment_image_url( $image_id, 'full'),
-
+      'video_url'     =>  get_field('video_url', $obj->ID),
       'smile_stories' => get_field('smile_stories', $obj->ID),
     );
 
