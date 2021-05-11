@@ -73,7 +73,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php endif ?>
 
         <?php if ($before_after): ?>
-        <li><a href="#before_after">Before After</a></li>
+          <li><a href="#before_after">Before & After</a></li>
         <?php endif ?>
 
         <?php if ($insta_url): ?>
