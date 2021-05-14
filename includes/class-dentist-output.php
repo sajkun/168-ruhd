@@ -160,6 +160,7 @@ class theme_dentist_output{
 
          'before_after' => array(
             'show'  => true,
+            'display' => 'none',
             'before_after_items' => get_before_after_by_dentist($obj->ID),
          ),
        ),

@@ -127,7 +127,7 @@
             <div class="cta__item not-active" data-target="form-online" onclick="show_online_visit()">
               <svg class="svg-icon-phone"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-phone"></use></svg>
 
-              <h4 class="cta__item-title">Online Visit (Coming Soon)</h4>
+              <h4 class="cta__item-title">Online Visit</h4>
               <p class="cta__item-text">Tell our dentists about your teeth and get a free treatment plan.</p>
             </div>
           </div><!-- cta__section -->
