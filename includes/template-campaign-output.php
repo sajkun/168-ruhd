@@ -33,31 +33,6 @@ class theme_campaign_output{
       $clinics .= sprintf('<option value="%1$s" >%1$s</option>', $t->post_title );
     }
 
-
-    // $form_id = get_option('default_subscription_form');
-    // $form_id = get_option('campaing_subscription_form_online');
-
-    // $shortcode = sprintf('[wpforms id="%s"]',  $form_id);
-    // $form    = do_shortcode($shortcode);
-    // $form    = str_replace('%post_title%', $obj->post_title, $form );
-    // $form  = str_replace('<option value="%theme_clinics%" >%theme_clinics%</option>', $clinics, $form );
-
-    // $treatments = get_posts(array(
-    //   'posts_per_page' => -1,
-    //   'post_type' => 'theme_treatment'
-    // ));
-    // $options = '';
-
-    // foreach ($treatments as $t) {
-    //   $options .= sprintf('<option value="%1$s" >%1$s</option>', $t->post_title);
-    // }
-
-    // $form = str_replace('<option value="%treatments%" >%treatments%</option>', $options, $form );
-
-    // unset($wp_popup_forms[$form_id]);
-
-    // $form_online = ($form_id)? str_replace('%single_treatment%', $obj->post_title, $form ): false;
-
     $form_id = get_option('campaing_subscription_form_inclinic');
     $shortcode =  sprintf('[wpforms id="%s"]',  $form_id);
     $form    = do_shortcode($shortcode);
