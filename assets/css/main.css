@@ -11265,6 +11265,33 @@ ul {
   display: inline-block;
 }
 
+.sample-show {
+  max-width: 203px;
+  height: 192px;
+  width: 100%;
+  border-radius: 25px;
+  border: 2px dashed #af9179;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.sample-show img {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.hide-samples {
+  color: #e95769 !important;
+  font-family: "HelveticaFont_", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.hide-samples svg {
+  vertical-align: 0 !important;
+}
+
 .carousel {
   background-color: #e7c8aa;
   overflow: hidden;

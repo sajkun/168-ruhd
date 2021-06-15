@@ -323,7 +323,11 @@ if(!is_user_logged_in() || !$show){
           <div class="right-sidebar__page" v-if="step == 3">
             <h2 class="right-sidebar__title">Let’s see your smile</h2>
             <p class="right-sidebar__text">Upload a quick photo of your current smile to help our treatment co-ordinators give you a more accurate plan.</p>
-            <p class="right-sidebar__text">Need help? <a href="">See examples <svg class="icon svg-icon-squre"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-squre"></use></svg></a></p>
+            <p class="right-sidebar__text">Need help? <a href="" v-if="!show_examples" v-on:click.prevent="hide_show_examples">See examples <svg class="icon svg-icon-squre"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-icon-squre"></use></svg></a>
+
+             <a href="" class="hide-samples" v-if="show_examples" v-on:click.prevent="hide_show_examples">  Hide examples
+            <svg id="SVGDoc" width="10" height="10" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 10 10"><defs></defs><desc>Generated with Avocode.</desc><g><g><title>Path</title><path d="M9.66198,1.96966l-3.02994,3.03027v0l3.02994,3.03013c0.45069,0.45087 0.45069,1.18121 0,1.63207c-0.22518,0.22519 -0.52042,0.33787 -0.81551,0.33787c-0.29558,0 -0.59084,-0.11251 -0.81585,-0.33787l-3.03061,-3.03048v0l-3.03037,3.03045c-0.22516,0.22519 -0.52042,0.33787 -0.81577,0.33787c-0.29526,0 -0.59032,-0.11251 -0.81568,-0.33787c-0.45069,-0.45066 -0.45069,-1.18103 0,-1.63206l3.02985,-3.03014v0l-3.03002,-3.03024c-0.45069,-0.4507 -0.45069,-1.18121 0,-1.6319c0.4506,-0.45035 1.18068,-0.45035 1.63145,0l3.03052,3.03028v0l3.03028,-3.03028c0.45086,-0.45035 1.18102,-0.45035 1.63154,0c0.45086,0.45069 0.45086,1.1812 0.00017,1.6319z" fill="#e95769" fill-opacity="1"></path></g></g></svg></a>
+            </p>
 
             <div class="spacer-h-15"></div>
 
@@ -332,14 +336,22 @@ if(!is_user_logged_in() || !$show){
                 <div class="col-6">
                   <load-item
                     v-on:change_image_uploaded="change_image_uploaded_cb($event, 'photo_1')"
+                    v-if="!show_examples"
                   ></load-item>
+                  <div class="sample-show" v-if="show_examples">
+                    <img src="<?php echo THEME_URL; ?>/assets/images/smile_closed.png" alt="">
+                  </div>
                   <span class="upload-image-item__title">Close up, teeth together</span>
                   <span class="upload-image-item__status not-loaded" :class="set_status_class('photo_1', 'class')"><i></i> {{set_status_class('photo_1', 'text')}}</span>
                 </div>
                 <div class="col-6">
                   <load-item
                     v-on:change_image_uploaded="change_image_uploaded_cb($event, 'photo_2')"
+                    v-if="!show_examples"
                   ></load-item>
+                  <div class="sample-show" v-if="show_examples">
+                    <img src="<?php echo THEME_URL; ?>/assets/images/smile_open.png" alt="">
+                  </div>
                   <span class="upload-image-item__title">Close up, open mouth</span>
                    <span class="upload-image-item__status not-loaded" :class="set_status_class('photo_2', 'class')"><i></i> {{set_status_class('photo_2', 'text')}}</span>
                 </div>
